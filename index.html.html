@@ -1,0 +1,2229 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BebiX — Gjithçka për Bebin Tënd</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍼</text></svg>">
+<meta name="description" content="Produktet më të mira për bebë në Kosovë. Cash on Delivery. Dërgesa 24h.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   ROOT & RESET
+═══════════════════════════════════════ */
+:root {
+  --blue: #4BA8D4;
+  --blue-2: #2d8fb8;
+  --blue-light: #EBF6FC;
+  --pink: #F06BA8;
+  --pink-2: #d4538e;
+  --pink-light: #FDF0F7;
+  --gold: #F5A623;
+  --green: #22C55E;
+  --red: #EF4444;
+  --dark: #0F1E28;
+  --dark-2: #1E3040;
+  --mid: #456070;
+  --light: #7A95A8;
+  --border: #DFF0F8;
+  --bg: #F5FAFD;
+  --white: #FFFFFF;
+  --shadow-sm: 0 2px 12px rgba(75,168,212,0.10);
+  --shadow-md: 0 6px 28px rgba(75,168,212,0.16);
+  --shadow-lg: 0 16px 56px rgba(75,168,212,0.20);
+  --r: 16px;
+  --r-sm: 10px;
+  --r-pill: 100px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--dark);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;border:none;outline:none;}
+
+/* ═══════════════════════════════════════
+   TYPOGRAPHY
+═══════════════════════════════════════ */
+.display{font-family:'Playfair Display',serif;}
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.18;}
+h1{font-size:clamp(32px,5.5vw,58px);}
+h2{font-size:clamp(24px,3.5vw,38px);}
+h3{font-size:clamp(17px,2vw,22px);}
+
+/* ═══════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════ */
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px;}
+.section{padding:64px 0;}
+.section-sm{padding:40px 0;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+
+/* ═══════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:var(--r-pill);font-size:15px;font-weight:700;transition:all .22s;white-space:nowrap;}
+.btn-primary{background:linear-gradient(135deg,var(--blue),var(--blue-2));color:#fff;box-shadow:0 4px 20px rgba(75,168,212,.35);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(75,168,212,.45);}
+.btn-pink{background:linear-gradient(135deg,var(--pink),var(--pink-2));color:#fff;box-shadow:0 4px 20px rgba(240,107,168,.35);}
+.btn-pink:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(240,107,168,.45);}
+.btn-outline{background:transparent;color:var(--blue);border:2px solid var(--blue);}
+.btn-outline:hover{background:var(--blue-light);}
+.btn-white{background:#fff;color:var(--blue);font-weight:700;}
+.btn-white:hover{background:var(--blue-light);}
+.btn-dark{background:var(--dark);color:#fff;}
+.btn-dark:hover{background:var(--dark-2);}
+.btn-lg{padding:17px 36px;font-size:16px;}
+.btn-sm{padding:9px 18px;font-size:13px;}
+.btn-icon{width:42px;height:42px;padding:0;border-radius:50%;}
+
+/* ═══════════════════════════════════════
+   BADGES
+═══════════════════════════════════════ */
+.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:var(--r-pill);font-size:12px;font-weight:700;letter-spacing:.3px;}
+.badge-blue{background:var(--blue-light);color:var(--blue);}
+.badge-pink{background:var(--pink-light);color:var(--pink);}
+.badge-gold{background:#FEF3C7;color:#92400E;}
+.badge-green{background:#DCFCE7;color:#166534;}
+.badge-red{background:#FEE2E2;color:#991B1B;}
+.badge-dark{background:var(--dark);color:#fff;}
+
+/* ═══════════════════════════════════════
+   1. TOPBAR
+═══════════════════════════════════════ */
+#topbar{background:linear-gradient(90deg,var(--blue) 0%,#6bc4e8 50%,var(--pink) 100%);color:#fff;font-size:13px;font-weight:600;overflow:hidden;position:relative;z-index:100;}
+.topbar-inner{display:flex;align-items:center;justify-content:center;gap:0;height:38px;}
+.topbar-item{display:flex;align-items:center;gap:7px;padding:0 20px;border-right:1px solid rgba(255,255,255,.25);white-space:nowrap;}
+.topbar-item:last-child{border-right:none;}
+.topbar-rotating{display:none;}
+@keyframes topbar-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ═══════════════════════════════════════
+   2. NAVBAR
+═══════════════════════════════════════ */
+#navbar{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1.5px solid var(--border);position:sticky;top:0;z-index:200;transition:box-shadow .3s;}
+#navbar.scrolled{box-shadow:0 4px 24px rgba(75,168,212,.13);}
+.nav-inner{max-width:1180px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.logo{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;letter-spacing:-.5px;}
+.logo .beb{color:var(--blue)}.logo .ix{color:var(--pink)}
+.nav-links{display:flex;gap:2px;list-style:none;}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--mid);padding:7px 11px;border-radius:var(--r-sm);transition:all .18s;}
+.nav-links a:hover{background:var(--blue-light);color:var(--blue);}
+.nav-actions{display:flex;align-items:center;gap:8px;}
+.nav-search{display:flex;align-items:center;gap:8px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-pill);padding:8px 14px;transition:border-color .2s;}
+.nav-search:focus-within{border-color:var(--blue);}
+.nav-search input{border:none;background:transparent;outline:none;font-size:13px;width:130px;font-family:'Plus Jakarta Sans',sans-serif;}
+.nav-icon-btn{position:relative;width:40px;height:40px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .18s;}
+.nav-icon-btn:hover{border-color:var(--blue);background:var(--blue-light);}
+.nav-icon-btn svg{width:18px;height:18px;stroke:var(--mid);fill:none;stroke-width:2;}
+.nav-badge{position:absolute;top:-4px;right:-4px;background:var(--pink);color:#fff;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:800;display:none;align-items:center;justify-content:center;}
+.wa-nav-btn{background:#25D366;color:#fff;border-radius:var(--r-pill);padding:8px 14px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px;transition:all .18s;}
+.wa-nav-btn:hover{background:#1da851;transform:scale(1.03);}
+.wa-nav-btn svg{width:16px;height:16px;fill:#fff;}
+/* Mobile search button — visible only on mobile */
+.nav-search-mobile-btn{display:none;position:relative;width:40px;height:40px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border);align-items:center;justify-content:center;transition:all .18s;}
+.nav-search-mobile-btn svg{width:18px;height:18px;stroke:var(--mid);fill:none;stroke-width:2;}
+.nav-search-mobile-btn:hover{border-color:var(--blue);background:var(--blue-light);}
+/* Mobile search dropdown */
+.mobile-search-drop{display:none;position:absolute;top:64px;left:0;right:0;background:#fff;border-bottom:1.5px solid var(--border);padding:12px 20px;box-shadow:0 8px 24px rgba(0,0,0,.08);z-index:199;}
+.mobile-search-drop.open{display:block;}
+.mobile-search-drop input{width:100%;padding:11px 16px;border:1.5px solid var(--border);border-radius:var(--r-pill);font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;outline:none;transition:border-color .2s;}
+.mobile-search-drop input:focus{border-color:var(--blue);}
+
+/* ═══════════════════════════════════════
+   3. HERO
+═══════════════════════════════════════ */
+#hero{background:linear-gradient(135deg,#E8F6FC 0%,#FBF0F8 55%,#E4F5FB 100%);min-height:560px;display:flex;align-items:center;position:relative;overflow:hidden;padding:60px 0 40px;}
+.hero-bg{position:absolute;inset:0;pointer-events:none;}
+.hero-blob-1{position:absolute;top:-80px;right:-60px;width:420px;height:420px;background:radial-gradient(circle,rgba(75,168,212,.12),transparent 70%);border-radius:50%;}
+.hero-blob-2{position:absolute;bottom:-60px;left:-40px;width:320px;height:320px;background:radial-gradient(circle,rgba(240,107,168,.10),transparent 70%);border-radius:50%;}
+.hero-stars{position:absolute;inset:0;}
+.hero-star{position:absolute;width:6px;height:6px;border-radius:50%;animation:twinkle 3s infinite;}
+@keyframes twinkle{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1180px;margin:0 auto;padding:0 20px;position:relative;z-index:1;}
+.hero-left{}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.eyebrow-text{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.5px;text-transform:uppercase;}
+.eyebrow-stars{display:flex;gap:2px;}
+.eyebrow-stars span{color:var(--gold);font-size:14px;}
+.hero h1{margin-bottom:18px;color:var(--dark);}
+.hero h1 em{font-style:italic;color:var(--blue);}
+.hero-sub{font-size:16px;color:var(--mid);line-height:1.65;margin-bottom:28px;max-width:460px;}
+.hero-sub strong{color:var(--dark);}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px;}
+.hero-proof{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.proof-avatars{display:flex;}
+.proof-avatars span{width:34px;height:34px;border-radius:50%;border:2.5px solid #fff;background:linear-gradient(135deg,var(--blue-light),var(--pink-light));display:flex;align-items:center;justify-content:center;font-size:14px;margin-left:-10px;}
+.proof-avatars span:first-child{margin-left:0;}
+.proof-text{font-size:13px;color:var(--mid);}
+.proof-text strong{color:var(--dark);}
+.hero-right{position:relative;}
+.hero-img-wrap{border-radius:28px;overflow:hidden;aspect-ratio:0.85;background:linear-gradient(160deg,var(--blue-light) 0%,var(--pink-light) 100%);display:flex;align-items:center;justify-content:center;font-size:120px;box-shadow:var(--shadow-lg);}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover;}
+.hero-float-1{position:absolute;top:20px;left:-20px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:10px;animation:float1 3s ease-in-out infinite;}
+.hero-float-2{position:absolute;bottom:30px;right:-16px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:var(--shadow-md);display:flex;align-items:center;gap:10px;animation:float2 3.5s ease-in-out infinite;}
+@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.float-icon{font-size:28px;}
+.float-label{font-size:11px;color:var(--light);}
+.float-val{font-size:14px;font-weight:700;color:var(--dark);}
+
+/* ═══════════════════════════════════════
+   4. TRUST BAR
+═══════════════════════════════════════ */
+#trust-bar{background:#fff;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.trust-item{display:flex;align-items:center;gap:12px;padding:20px 24px;border-right:1.5px solid var(--border);}
+.trust-item:last-child{border-right:none;}
+.trust-ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.trust-ico.blue{background:var(--blue-light);}
+.trust-ico.pink{background:var(--pink-light);}
+.trust-ico.gold{background:#FEF3C7;}
+.trust-ico.green{background:#DCFCE7;}
+.trust-text strong{display:block;font-size:14px;font-weight:700;color:var(--dark);}
+.trust-text span{font-size:12px;color:var(--light);}
+
+/* ═══════════════════════════════════════
+   5. BEST SELLERS
+═══════════════════════════════════════ */
+.section-head{text-align:center;margin-bottom:36px;}
+.section-head .tag{display:inline-flex;align-items:center;gap:7px;background:var(--blue-light);color:var(--blue);padding:6px 16px;border-radius:var(--r-pill);font-size:13px;font-weight:700;margin-bottom:12px;letter-spacing:.3px;}
+.section-head h2{margin-bottom:10px;}
+.section-head p{font-size:15px;color:var(--light);max-width:480px;margin:0 auto;}
+
+/* PRODUCT CARD */
+.pcard{background:#fff;border-radius:var(--r);border:1.5px solid var(--border);overflow:hidden;transition:transform .24s,box-shadow .24s;position:relative;cursor:pointer;}
+.pcard:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);}
+.pcard-img{aspect-ratio:1;background:linear-gradient(145deg,var(--blue-light),var(--pink-light));display:flex;align-items:center;justify-content:center;font-size:64px;position:relative;overflow:hidden;}
+.pcard-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.pcard:hover .pcard-img img{transform:scale(1.05);}
+.pcard-badges{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:5px;z-index:2;}
+.pcard-badge{padding:3px 9px;border-radius:var(--r-pill);font-size:11px;font-weight:800;}
+.pcard-badge.sale{background:var(--red);color:#fff;}
+.pcard-badge.new{background:var(--blue);color:#fff;}
+.pcard-badge.hot{background:var(--gold);color:#fff;}
+.pcard-badge.sold{background:#94a3b8;color:#fff;}
+.pcard-fav{position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;backdrop-filter:blur(4px);}
+.pcard-fav:hover{transform:scale(1.15);}
+.pcard-fav svg{width:16px;height:16px;stroke:#94a3b8;fill:none;stroke-width:2;transition:all .18s;}
+.pcard-fav.active svg{stroke:var(--pink);fill:var(--pink);}
+.pcard-body{padding:14px 15px 16px;}
+.pcard-rating{display:flex;align-items:center;gap:5px;margin-bottom:5px;}
+.stars-row{display:flex;gap:1px;}
+.stars-row span{color:var(--gold);font-size:12px;}
+.pcard-rating .count{font-size:11px;color:var(--light);}
+.pcard h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:var(--dark);margin-bottom:6px;line-height:1.35;}
+.pcard-price{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.price-now{font-size:18px;font-weight:800;color:var(--blue);}
+.price-old{font-size:13px;color:var(--light);text-decoration:line-through;}
+.price-save{font-size:11px;font-weight:700;color:var(--green);}
+.pcard-stock{font-size:11px;font-weight:700;color:var(--red);display:flex;align-items:center;gap:4px;margin-bottom:10px;}
+.pcard-stock.ok{color:var(--green);}
+.btn-add-card{width:100%;padding:10px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--pink));color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:all .18s;font-family:'Plus Jakarta Sans',sans-serif;border:none;}
+.btn-add-card:hover{opacity:.9;transform:translateY(-1px);}
+.btn-add-card:disabled{background:#cbd5e1;cursor:not-allowed;transform:none;}
+
+/* ═══════════════════════════════════════
+   7. BUNDLES
+═══════════════════════════════════════ */
+#bundles{background:linear-gradient(160deg,var(--blue-light) 0%,var(--pink-light) 100%);}
+.bundle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.bundle-card{background:#fff;border-radius:20px;padding:28px 24px;border:2px solid transparent;transition:all .24s;position:relative;overflow:hidden;}
+.bundle-card.featured{border-color:var(--blue);box-shadow:var(--shadow-md);}
+.bundle-card.featured::before{content:'PIK I FUNDIT';position:absolute;top:14px;right:-28px;background:var(--gold);color:#fff;font-size:11px;font-weight:800;padding:5px 40px;transform:rotate(45deg);letter-spacing:.5px;}
+.bundle-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.bundle-icon{font-size:36px;margin-bottom:14px;}
+.bundle-card h3{font-size:20px;margin-bottom:6px;}
+.bundle-card .bundle-sub{font-size:13px;color:var(--light);margin-bottom:18px;}
+.bundle-items{list-style:none;margin-bottom:20px;}
+.bundle-items li{font-size:13px;color:var(--mid);padding:5px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.bundle-items li:last-child{border:none;}
+.bundle-items li::before{content:'✓';color:var(--green);font-weight:800;flex-shrink:0;}
+.bundle-pricing{margin-bottom:18px;}
+.bundle-was{font-size:13px;color:var(--light);text-decoration:line-through;margin-bottom:2px;}
+.bundle-now{font-size:28px;font-weight:800;color:var(--blue);font-family:'Playfair Display',serif;}
+.bundle-save{display:inline-block;background:#DCFCE7;color:#166534;font-size:12px;font-weight:700;padding:3px 10px;border-radius:var(--r-pill);margin-left:8px;}
+
+/* ═══════════════════════════════════════
+   8. CATEGORIES
+═══════════════════════════════════════ */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.cat-card{border-radius:var(--r);overflow:hidden;position:relative;aspect-ratio:0.9;cursor:pointer;transition:transform .24s,box-shadow .24s;}
+.cat-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.cat-card:hover .cat-overlay{opacity:.55;}
+.cat-card:hover .cat-arrow{transform:translateX(4px);}
+.cat-bg{width:100%;height:100%;background:linear-gradient(145deg,var(--blue-light),var(--pink-light));display:flex;align-items:center;justify-content:center;font-size:72px;}
+.cat-bg img{width:100%;height:100%;object-fit:cover;}
+.cat-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,30,40,.72) 0%,transparent 55%);transition:opacity .24s;}
+.cat-info{position:absolute;bottom:0;left:0;right:0;padding:16px;}
+.cat-info h4{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#fff;margin-bottom:2px;}
+.cat-info span{font-size:12px;color:rgba(255,255,255,.72);}
+.cat-arrow{display:inline-block;color:#fff;font-size:16px;margin-left:6px;transition:transform .2s;}
+.cat-count-badge{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.9);color:var(--dark);font-size:11px;font-weight:700;padding:3px 9px;border-radius:var(--r-pill);backdrop-filter:blur(4px);}
+
+/* ═══════════════════════════════════════
+   9. SOCIAL PROOF
+═══════════════════════════════════════ */
+#social-proof{background:#fff;}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:52px;}
+.stat-card{text-align:center;padding:28px 16px;background:var(--bg);border-radius:var(--r);border:1.5px solid var(--border);}
+.stat-card .stat-num{font-family:'Playfair Display',serif;font-size:40px;font-weight:900;line-height:1;margin-bottom:6px;}
+.stat-card.blue .stat-num{color:var(--blue);}
+.stat-card.pink .stat-num{color:var(--pink);}
+.stat-card.gold .stat-num{color:var(--gold);}
+.stat-card.green .stat-num{color:var(--green);}
+.stat-card p{font-size:13px;color:var(--light);font-weight:500;}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.review-card{background:var(--bg);border-radius:var(--r);padding:22px;border:1.5px solid var(--border);transition:box-shadow .2s;}
+.review-card:hover{box-shadow:var(--shadow-md);}
+.review-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.reviewer-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--blue-light),var(--pink-light));display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.reviewer-info strong{display:block;font-size:14px;font-weight:700;}
+.reviewer-info span{font-size:12px;color:var(--light);}
+.review-stars{display:flex;gap:2px;margin-bottom:10px;}
+.review-stars span{color:var(--gold);font-size:14px;}
+.review-text{font-size:14px;color:var(--mid);line-height:1.65;font-style:italic;}
+.review-product{margin-top:12px;display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--blue);background:var(--blue-light);padding:3px 10px;border-radius:var(--r-pill);}
+
+/* ═══════════════════════════════════════
+   10. WHY US
+═══════════════════════════════════════ */
+#why-us{background:linear-gradient(135deg,var(--dark) 0%,var(--dark-2) 100%);color:#fff;}
+#why-us .section-head .tag{background:rgba(255,255,255,.12);color:#fff;}
+#why-us .section-head h2{color:#fff;}
+#why-us .section-head p{color:rgba(255,255,255,.6);}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.why-card{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.10);border-radius:var(--r);padding:28px 22px;transition:all .22s;}
+.why-card:hover{background:rgba(255,255,255,.10);transform:translateY(-3px);}
+.why-ico{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;}
+.why-ico.b{background:rgba(75,168,212,.25);}
+.why-ico.p{background:rgba(240,107,168,.25);}
+.why-ico.g{background:rgba(245,166,35,.25);}
+.why-card h4{font-size:16px;font-weight:700;color:#fff;margin-bottom:7px;}
+.why-card p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.6;}
+
+/* ═══════════════════════════════════════
+   11. HOW IT WORKS
+═══════════════════════════════════════ */
+#how-it-works{background:#fff;}
+.steps-row{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;position:relative;}
+.steps-row::before{content:'';position:absolute;top:36px;left:17%;right:17%;height:2px;background:linear-gradient(90deg,var(--blue),var(--pink));z-index:0;}
+.step{text-align:center;position:relative;z-index:1;}
+.step-num{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 18px;position:relative;box-shadow:var(--shadow-md);}
+.step-num.s1{background:linear-gradient(135deg,var(--blue-light),#c8e9f6);}
+.step-num.s2{background:linear-gradient(135deg,#FEF3C7,#fde68a);}
+.step-num.s3{background:linear-gradient(135deg,var(--pink-light),#f9c1db);}
+.step h4{font-size:18px;font-weight:700;margin-bottom:8px;}
+.step p{font-size:14px;color:var(--light);line-height:1.6;max-width:200px;margin:0 auto;}
+
+/* ═══════════════════════════════════════
+   12. FAQ
+═══════════════════════════════════════ */
+#faq{background:var(--bg);}
+.faq-wrap{max-width:720px;margin:0 auto;}
+.faq-item{background:#fff;border-radius:var(--r);border:1.5px solid var(--border);margin-bottom:10px;overflow:hidden;transition:box-shadow .2s;}
+.faq-item:hover{box-shadow:var(--shadow-sm);}
+.faq-q{width:100%;padding:18px 22px;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:var(--dark);text-align:left;}
+.faq-icon{width:28px;height:28px;border-radius:50%;background:var(--bg);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px;transition:transform .3s;}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--blue-light);color:var(--blue);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-a-inner{padding:0 22px 18px;font-size:14px;color:var(--mid);line-height:1.7;}
+
+/* ═══════════════════════════════════════
+   13. FOOTER
+═══════════════════════════════════════ */
+footer{background:var(--dark);color:rgba(255,255,255,.65);}
+.footer-top{padding:52px 0 36px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:36px;}
+.footer-brand .logo{font-size:28px;margin-bottom:12px;display:block;}
+.footer-brand p{font-size:13px;line-height:1.7;margin-bottom:18px;color:rgba(255,255,255,.5);}
+.footer-trust-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.ftrust-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-pill);padding:5px 12px;font-size:12px;font-weight:600;color:rgba(255,255,255,.7);}
+.footer-col h5{color:#fff;font-size:14px;font-weight:700;margin-bottom:16px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:9px;}
+.footer-col ul li a{font-size:13px;color:rgba(255,255,255,.5);transition:color .18s;}
+.footer-col ul li a:hover{color:var(--blue);}
+.footer-contact-item{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;color:rgba(255,255,255,.5);}
+.footer-contact-item span{font-size:16px;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:18px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.3);}
+.footer-methods{display:flex;align-items:center;gap:8px;}
+.pay-chip{background:rgba(255,255,255,.08);border-radius:6px;padding:5px 10px;font-size:11px;font-weight:700;color:rgba(255,255,255,.6);}
+
+/* ═══════════════════════════════════════
+   CART SIDEBAR
+═══════════════════════════════════════ */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:400;opacity:0;pointer-events:none;transition:opacity .3s;}
+.overlay.open{opacity:1;pointer-events:all;}
+.cart-sidebar{position:fixed;top:0;right:0;width:400px;max-width:100vw;height:100dvh;background:#fff;z-index:401;transform:translateX(100%);transition:transform .3s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column;box-shadow:-8px 0 48px rgba(0,0,0,.15);}
+.cart-sidebar.open{transform:translateX(0);}
+.cs-head{padding:20px 22px;border-bottom:1.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.cs-head h3{font-size:19px;}
+.cs-close{width:34px;height:34px;border-radius:50%;background:var(--bg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--mid);}
+.cs-body{flex:1;overflow-y:auto;padding:16px 22px;}
+.cs-empty{text-align:center;padding:60px 0;color:var(--light);}
+.cs-empty .em-icon{font-size:56px;margin-bottom:12px;}
+.cs-item{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);}
+.csi-img{width:62px;height:62px;border-radius:12px;background:linear-gradient(135deg,var(--blue-light),var(--pink-light));flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:26px;overflow:hidden;}
+.csi-img img{width:100%;height:100%;object-fit:cover;}
+.csi-info{flex:1;}
+.csi-info h4{font-size:13px;font-weight:600;margin-bottom:3px;line-height:1.3;}
+.csi-price{font-size:15px;font-weight:800;color:var(--blue);}
+.csi-qty{display:flex;align-items:center;gap:8px;margin-top:7px;}
+.csi-qty button{width:26px;height:26px;border-radius:8px;border:1.5px solid var(--border);background:#fff;cursor:pointer;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:border-color .18s;}
+.csi-qty button:hover{border-color:var(--blue);}
+.csi-qty span{font-size:14px;font-weight:700;min-width:22px;text-align:center;}
+.csi-remove{background:none;border:none;color:var(--light);cursor:pointer;font-size:18px;align-self:flex-start;transition:color .18s;}
+.csi-remove:hover{color:var(--red);}
+.cs-foot{padding:16px 22px;border-top:1.5px solid var(--border);}
+.cs-total-row{display:flex;justify-content:space-between;margin-bottom:14px;}
+.cs-total-row span{font-size:14px;color:var(--mid);}
+.cs-total-row strong{font-size:22px;font-weight:800;color:var(--dark);}
+.cs-cod{background:#DCFCE7;border-radius:10px;padding:10px 14px;font-size:12px;font-weight:600;color:#166534;display:flex;align-items:center;gap:7px;margin-bottom:14px;}
+.btn-checkout-cs{width:100%;padding:15px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--pink));color:#fff;font-size:15px;font-weight:800;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border:none;transition:transform .18s;}
+.btn-checkout-cs:hover{transform:translateY(-1px);}
+
+/* ═══════════════════════════════════════
+   CHECKOUT PAGE
+═══════════════════════════════════════ */
+#page-checkout{display:none;}
+#page-checkout.active{display:block;}
+.checkout-wrap{max-width:780px;margin:0 auto;padding:40px 20px;}
+.ck-header{margin-bottom:28px;}
+.ck-header h2{font-size:28px;margin-bottom:4px;}
+.ck-header p{font-size:14px;color:var(--light);}
+.ck-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+.form-field{display:flex;flex-direction:column;gap:6px;}
+.form-field label{font-size:13px;font-weight:600;color:var(--mid);}
+.form-field input,.form-field textarea,.form-field select{padding:12px 15px;border:1.5px solid var(--border);border-radius:12px;font-size:14px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--dark);outline:none;transition:border-color .2s;}
+.form-field input:focus,.form-field textarea:focus{border-color:var(--blue);}
+.form-field.span-2{grid-column:1/-1;}
+.ck-summary{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);padding:20px;margin:20px 0;}
+.ck-summary h3{font-size:16px;font-weight:700;margin-bottom:14px;}
+.ck-line{display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px solid var(--border);}
+.ck-line:last-child{border:none;font-weight:800;font-size:15px;color:var(--blue);}
+.ck-cod-box{background:#DCFCE7;border:1.5px solid #86efac;border-radius:12px;padding:14px 18px;display:flex;gap:12px;align-items:center;margin-bottom:20px;}
+.ck-cod-box .cod-ico{font-size:26px;}
+.ck-cod-box p{font-size:13px;color:#166534;font-weight:500;line-height:1.55;}
+.btn-place{width:100%;padding:16px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--pink));color:#fff;font-size:16px;font-weight:800;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border:none;transition:transform .18s;}
+.btn-place:hover{transform:translateY(-1px);}
+.back-btn{display:inline-flex;align-items:center;gap:6px;color:var(--blue);font-size:14px;font-weight:600;cursor:pointer;margin-bottom:22px;}
+
+/* ═══════════════════════════════════════
+   SUCCESS PAGE
+═══════════════════════════════════════ */
+#page-success{display:none;}
+#page-success.active{display:block;}
+.success-wrap{max-width:540px;margin:80px auto;padding:0 20px;text-align:center;}
+.success-wrap .suc-icon{font-size:80px;margin-bottom:20px;}
+.success-wrap h2{margin-bottom:10px;}
+.success-wrap .suc-sub{font-size:15px;color:var(--mid);line-height:1.7;margin-bottom:24px;}
+.order-box{background:linear-gradient(135deg,var(--blue-light),var(--pink-light));border-radius:var(--r);padding:20px;margin-bottom:22px;text-align:left;}
+.order-box .ob-label{font-size:12px;color:var(--light);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
+.order-box .ob-num{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:var(--blue);}
+.order-detail{font-size:13px;color:var(--mid);line-height:1.9;text-align:left;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:20px;}
+.btn-wa-order{width:100%;padding:14px;background:#25D366;color:#fff;border-radius:14px;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;border:none;margin-bottom:12px;font-family:'Plus Jakarta Sans',sans-serif;transition:all .18s;}
+.btn-wa-order:hover{background:#1da851;}
+.btn-wa-order svg{width:20px;height:20px;fill:#fff;}
+
+/* ═══════════════════════════════════════
+   STICKY ADD-TO-CART BAR (Product detail)
+═══════════════════════════════════════ */
+#sticky-atc{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--border);z-index:300;transform:translateY(100%);transition:transform .3s;box-shadow:0 -6px 28px rgba(0,0,0,.10);}
+#sticky-atc.visible{transform:translateY(0);}
+.atc-inner{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.atc-info{display:flex;align-items:center;gap:12px;}
+.atc-thumb{width:44px;height:44px;border-radius:10px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.atc-name{font-size:14px;font-weight:600;color:var(--dark);}
+.atc-price{font-size:16px;font-weight:800;color:var(--blue);}
+.atc-actions{display:flex;align-items:center;gap:10px;}
+.atc-qty-wrap{display:flex;align-items:center;gap:8px;background:var(--bg);border-radius:var(--r-pill);padding:6px 14px;}
+.atc-qty-btn{background:none;border:none;cursor:pointer;font-size:18px;font-weight:700;color:var(--mid);transition:color .18s;}
+.atc-qty-btn:hover{color:var(--blue);}
+.atc-qty-val{font-size:15px;font-weight:700;min-width:24px;text-align:center;}
+
+/* ═══════════════════════════════════════
+   WHATSAPP FLOAT
+═══════════════════════════════════════ */
+.wa-float{position:fixed;bottom:80px;right:22px;z-index:350;display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+.wa-float-tip{background:var(--dark);color:#fff;font-size:12px;font-weight:600;padding:7px 13px;border-radius:10px;white-space:nowrap;opacity:0;transform:translateX(8px);transition:all .2s;pointer-events:none;}
+.wa-float:hover .wa-float-tip{opacity:1;transform:translateX(0);}
+.wa-float-btn{width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.38);cursor:pointer;border:none;transition:all .2s;}
+.wa-float-btn:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,.48);}
+.wa-float-btn svg{width:28px;height:28px;fill:#fff;}
+
+/* ═══════════════════════════════════════
+   EXIT INTENT POPUP
+═══════════════════════════════════════ */
+.exit-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:500;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:20px;}
+.exit-overlay.open{opacity:1;pointer-events:all;}
+.exit-popup{background:#fff;border-radius:24px;padding:36px 32px;max-width:440px;width:100%;text-align:center;position:relative;transform:scale(.9);transition:transform .3s;}
+.exit-overlay.open .exit-popup{transform:scale(1);}
+.ep-close{position:absolute;top:14px;right:14px;background:var(--bg);border:none;border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:16px;color:var(--mid);}
+.ep-icon{font-size:56px;margin-bottom:12px;}
+.ep-title{font-size:22px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.ep-sub{font-size:14px;color:var(--mid);margin-bottom:20px;line-height:1.55;}
+.ep-offer{background:linear-gradient(135deg,var(--blue-light),var(--pink-light));border-radius:14px;padding:14px;margin-bottom:20px;}
+.ep-offer .ep-code{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--blue);letter-spacing:2px;}
+.ep-offer span{font-size:13px;color:var(--mid);}
+.ep-note{font-size:12px;color:var(--light);margin-top:14px;}
+
+/* ═══════════════════════════════════════
+   TOAST
+═══════════════════════════════════════ */
+.toast{position:fixed;top:80px;right:22px;background:var(--dark);color:#fff;padding:13px 20px;border-radius:12px;font-size:13px;font-weight:600;z-index:600;transform:translateY(-10px);opacity:0;transition:all .3s;pointer-events:none;max-width:290px;box-shadow:var(--shadow-lg);}
+.toast.show{transform:translateY(0);opacity:1;}
+
+/* ═══════════════════════════════════════
+   PRODUCT DETAIL PAGE
+═══════════════════════════════════════ */
+#page-product{display:none;}
+#page-product.active{display:block;}
+.pd-wrap{max-width:1100px;margin:0 auto;padding:36px 20px;}
+.pd-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-bottom:52px;}
+.pd-img-area{position:relative;}
+.pd-main-img{border-radius:22px;aspect-ratio:1;background:linear-gradient(145deg,var(--blue-light),var(--pink-light));display:flex;align-items:center;justify-content:center;font-size:110px;overflow:hidden;border:1.5px solid var(--border);}
+.pd-main-img img{width:100%;height:100%;object-fit:cover;}
+.pd-fav-btn{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.9);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);transition:all .18s;}
+.pd-fav-btn svg{width:18px;height:18px;stroke:#94a3b8;fill:none;stroke-width:2;transition:all .18s;}
+.pd-fav-btn.active svg{stroke:var(--pink);fill:var(--pink);}
+.pd-info{}
+.pd-breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--light);margin-bottom:16px;flex-wrap:wrap;}
+.pd-breadcrumb span{cursor:pointer;transition:color .18s;}
+.pd-breadcrumb span:hover{color:var(--blue);}
+.pd-breadcrumb .sep{color:var(--border);}
+.pd-badges-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
+.pd-title{font-size:clamp(22px,3vw,30px);margin-bottom:12px;}
+.pd-rating-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+.pd-rating-row .stars-row span{font-size:15px;}
+.pd-rating-row .rat-num{font-size:14px;font-weight:700;color:var(--dark);}
+.pd-rating-row .rat-count{font-size:13px;color:var(--light);}
+.pd-price-row{margin-bottom:16px;}
+.pd-price-now{font-family:'Playfair Display',serif;font-size:38px;font-weight:900;color:var(--blue);}
+.pd-price-old{font-size:16px;color:var(--light);text-decoration:line-through;margin-left:10px;}
+.pd-price-save{display:inline-block;background:#DCFCE7;color:#166534;font-size:12px;font-weight:700;padding:3px 10px;border-radius:var(--r-pill);margin-left:8px;}
+.pd-desc{font-size:14px;color:var(--mid);line-height:1.75;margin-bottom:20px;}
+.pd-specs{background:var(--bg);border-radius:var(--r);padding:16px;margin-bottom:22px;}
+.pd-specs h4{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:10px;}
+.spec-row{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid var(--border);}
+.spec-row:last-child{border:none;}
+.spec-row span:first-child{color:var(--light);}
+.spec-row span:last-child{font-weight:600;}
+.pd-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.btn-pd-add{flex:1;padding:15px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--pink));color:#fff;font-size:15px;font-weight:800;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border:none;transition:transform .18s;min-width:160px;}
+.btn-pd-add:hover{transform:translateY(-1px);}
+.btn-pd-wa{padding:15px 18px;border-radius:14px;background:#25D366;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;border:none;display:flex;align-items:center;gap:7px;}
+.btn-pd-wa svg{width:18px;height:18px;fill:#fff;}
+.pd-upsell{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r);padding:16px;}
+.pd-upsell h4{font-size:13px;font-weight:700;margin-bottom:10px;}
+.upsell-item{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+.upsell-item:last-child{border:none;}
+.upsell-img{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--blue-light),var(--pink-light));flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.upsell-info{flex:1;font-size:12px;}
+.upsell-info strong{display:block;font-weight:600;color:var(--dark);}
+.upsell-info span{color:var(--light);}
+.upsell-price{font-size:13px;font-weight:800;color:var(--blue);}
+.upsell-add{background:var(--blue-light);color:var(--blue);border:none;border-radius:8px;padding:5px 10px;font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0;}
+
+/* RELATED SLIDER */
+.related-wrap{margin-top:48px;}
+.related-wrap h2{font-size:22px;margin-bottom:18px;}
+.slider-container{overflow:hidden;}
+.slider-track{display:flex;gap:14px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:4px;}
+.slider-track::-webkit-scrollbar{display:none;}
+.slider-card{flex-shrink:0;width:170px;background:#fff;border-radius:14px;border:1.5px solid var(--border);cursor:pointer;overflow:hidden;transition:transform .2s,box-shadow .2s;}
+.slider-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.sc-img{aspect-ratio:1;background:linear-gradient(135deg,var(--blue-light),var(--pink-light));display:flex;align-items:center;justify-content:center;font-size:40px;}
+.sc-img img{width:100%;height:100%;object-fit:cover;}
+.sc-body{padding:10px 11px 12px;}
+.sc-body h4{font-size:12px;font-weight:600;margin-bottom:4px;line-height:1.3;}
+.sc-body span{font-size:13px;font-weight:800;color:var(--blue);}
+.slider-nav{display:flex;gap:8px;margin-top:12px;justify-content:flex-end;}
+.sl-btn{width:36px;height:36px;border-radius:50%;background:#fff;border:1.5px solid var(--border);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:border-color .18s,color .18s;}
+.sl-btn:hover{border-color:var(--blue);color:var(--blue);}
+
+/* ═══════════════════════════════════════
+   CATEGORY PAGE
+═══════════════════════════════════════ */
+#page-category{display:none;}
+#page-category.active{display:block;}
+.sub-tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.sub-tag{padding:6px 16px;border-radius:var(--r-pill);font-size:13px;font-weight:500;background:#fff;border:1.5px solid var(--border);cursor:pointer;transition:all .18s;color:var(--mid);}
+.sub-tag.active,.sub-tag:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
+
+/* ═══════════════════════════════════════
+   FAVORITES SIDEBAR
+═══════════════════════════════════════ */
+.fav-sidebar{position:fixed;top:0;left:0;width:360px;max-width:100vw;height:100dvh;background:#fff;z-index:401;transform:translateX(-100%);transition:transform .3s cubic-bezier(.22,1,.36,1);display:flex;flex-direction:column;box-shadow:8px 0 48px rgba(0,0,0,.15);}
+.fav-sidebar.open{transform:translateX(0);}
+.fs-head{padding:20px 22px;border-bottom:1.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.fs-head h3{font-size:19px;}
+.fs-body{flex:1;overflow-y:auto;padding:16px 22px;}
+.fav-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);align-items:center;}
+.fi-img{width:54px;height:54px;border-radius:10px;background:linear-gradient(135deg,var(--blue-light),var(--pink-light));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;cursor:pointer;overflow:hidden;}
+.fi-img img{width:100%;height:100%;object-fit:cover;}
+.fi-info{flex:1;cursor:pointer;}
+.fi-info h4{font-size:13px;font-weight:600;margin-bottom:2px;}
+.fi-info span{font-size:13px;font-weight:800;color:var(--blue);}
+.fi-rm{background:none;border:none;color:var(--light);cursor:pointer;font-size:18px;padding:0 4px;transition:color .18s;}
+.fi-rm:hover{color:var(--red);}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media(max-width:1024px){
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .cat-grid{grid-template-columns:repeat(2,1fr);}
+  .bundle-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  h1{font-size:30px;}h2{font-size:24px;}
+  .nav-links{display:none;}
+  .nav-search{display:none;}
+  .nav-search-mobile-btn{display:flex;}
+  .wa-nav-btn span{display:none;}
+  .wa-nav-btn{padding:8px 10px;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .trust-grid{grid-template-columns:1fr 1fr;}
+  .trust-item:nth-child(2){border-right:none;}
+  .trust-item:nth-child(3){border-right:1.5px solid var(--border);}
+  .trust-item:nth-child(4){border-right:none;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .reviews-grid{grid-template-columns:1fr;}
+  .steps-row{grid-template-columns:1fr;}
+  .steps-row::before{display:none;}
+  .grid-3{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  .pd-grid{grid-template-columns:1fr;}
+  .ck-grid{grid-template-columns:1fr;}
+  .ck-grid .span-2{grid-column:auto;}
+  .checkout-wrap{padding:24px 16px;}
+  .bundle-card.featured::before{display:none;}
+  .atc-inner{flex-direction:column;gap:10px;}
+  .section{padding:44px 0;}
+}
+@media(max-width:480px){
+  .trust-grid{grid-template-columns:1fr;}
+  .trust-item{border-right:none;border-bottom:1.5px solid var(--border);}
+  .trust-item:last-child{border-bottom:none;}
+  .hero-ctas{flex-direction:column;}
+  .hero-ctas .btn{width:100%;justify-content:center;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .cat-grid{grid-template-columns:1fr 1fr;}
+  .grid-2{grid-template-columns:1fr 1fr;}
+  .grid-4{grid-template-columns:1fr 1fr;}
+}
+/* ── ZGJEDHJA E PRINDËRVE TABS ── */
+.zp-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:28px;}
+.zp-tab{padding:9px 18px;border-radius:var(--r-pill);font-size:13px;font-weight:600;background:var(--bg);border:1.5px solid var(--border);cursor:pointer;color:var(--mid);transition:all .18s;font-family:'Plus Jakarta Sans',sans-serif;}
+.zp-tab:hover{border-color:var(--pink);color:var(--pink);background:var(--pink-light);}
+.zp-tab.active{background:var(--pink);color:#fff;border-color:var(--pink);box-shadow:0 4px 14px rgba(240,107,168,.30);}
+
+/* ══════════════════════════════════
+   BRANDS SLIDER
+══════════════════════════════════ */
+#brands-section{background:#F9F5F0;padding:52px 0 44px;overflow:hidden;}
+.brands-header{text-align:center;margin-bottom:32px;padding:0 20px;}
+.brands-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--pink);margin-bottom:10px;}
+.brands-title{font-family:'Playfair Display',serif;font-size:clamp(22px,3.5vw,34px);font-weight:700;color:var(--dark);line-height:1.2;}
+.brands-title em{font-style:italic;color:var(--blue);}
+.brands-track-wrap{padding:8px 28px 20px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;cursor:grab;}
+.brands-track-wrap:active{cursor:grabbing;}
+.brands-track-wrap::-webkit-scrollbar{display:none;}
+.brands-track{display:flex;gap:28px;align-items:flex-start;width:max-content;padding:8px 4px;}
+.brand-pill{display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;scroll-snap-align:start;flex-shrink:0;}
+.brand-circle{width:86px;height:86px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.9);box-shadow:0 4px 18px rgba(0,0,0,0.07),0 1px 4px rgba(0,0,0,0.04);transition:transform 0.28s cubic-bezier(.34,1.56,.64,1),box-shadow 0.28s ease;position:relative;overflow:hidden;}
+.brand-circle::after{content:'';position:absolute;inset:0;border-radius:50%;background:rgba(255,255,255,0);transition:background 0.22s;}
+.brand-pill:hover .brand-circle{transform:scale(1.10) translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.13),0 2px 8px rgba(0,0,0,0.06);}
+.brand-pill:hover .brand-circle::after{background:rgba(255,255,255,0.18);}
+.brand-ico{font-size:34px;position:relative;z-index:1;transition:transform 0.28s cubic-bezier(.34,1.56,.64,1);}
+.brand-pill:hover .brand-ico{transform:scale(1.12);}
+.brand-name{font-size:12px;font-weight:600;color:var(--mid);text-align:center;max-width:80px;line-height:1.3;transition:color 0.18s;}
+.brand-pill:hover .brand-name{color:var(--blue);}
+.brand-pill.active-brand .brand-circle{box-shadow:0 0 0 3px var(--blue),0 8px 24px rgba(75,168,212,.25);}
+.brand-pill.active-brand .brand-name{color:var(--blue);font-weight:700;}
+
+/* Logo images inside brand circles */
+.brand-logo-img{
+  width:64%;
+  height:64%;
+  object-fit:contain;
+  position:relative;
+  z-index:1;
+  display:block;
+  -webkit-transform:translateZ(0);
+  transform:translateZ(0);
+  transition:transform 0.28s cubic-bezier(.34,1.56,.64,1);
+}
+.brand-pill:hover .brand-logo-img{transform:scale(1.10);}
+.brand-circle.logo-circle{
+  background:#fff !important;
+  box-shadow:0 4px 18px rgba(0,0,0,0.09),0 1px 4px rgba(0,0,0,0.05),inset 0 0 0 1.5px rgba(0,0,0,0.07);
+}
+
+/* ══════════════════════════════════
+   BRAND MODAL
+══════════════════════════════════ */
+.brand-modal-bg{position:fixed;inset:0;background:rgba(15,30,40,0.55);z-index:700;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.30s ease;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);}
+.brand-modal-bg.open{opacity:1;pointer-events:all;}
+.brand-modal{background:#fff;width:100%;max-width:680px;max-height:82vh;border-radius:24px 24px 0 0;overflow:hidden;display:flex;flex-direction:column;transform:translateY(40px);transition:transform 0.34s cubic-bezier(.22,1,.36,1);box-shadow:0 -12px 56px rgba(0,0,0,0.15);}
+.brand-modal-bg.open .brand-modal{transform:translateY(0);}
+@media(min-width:600px){
+  .brand-modal-bg{align-items:center;padding:24px;}
+  .brand-modal{border-radius:24px;max-height:80vh;transform:translateY(0) scale(0.94);}
+  .brand-modal-bg.open .brand-modal{transform:translateY(0) scale(1);}
+}
+.bm-head{display:flex;align-items:center;justify-content:space-between;padding:20px 22px 16px;border-bottom:1.5px solid #F0F0F0;flex-shrink:0;background:#fff;z-index:2;}
+.bm-head-left{display:flex;align-items:center;gap:14px;}
+.bm-icon{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.bm-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--dark);line-height:1.1;}
+.bm-count{font-size:12px;color:var(--light);font-weight:500;margin-top:3px;}
+.bm-close{width:36px;height:36px;border-radius:50%;background:#F5F5F5;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.18s;}
+.bm-close:hover{background:#E5E5E5;}
+.bm-close svg{width:16px;height:16px;stroke:var(--dark);}
+.bm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:18px 18px 28px;overflow-y:auto;flex:1;}
+@media(max-width:480px){.bm-grid{grid-template-columns:repeat(2,1fr);gap:10px;padding:14px 14px 20px;}}
+.bm-card{background:#FAFAFA;border-radius:14px;overflow:hidden;border:1.5px solid #F0F0F0;cursor:pointer;transition:transform 0.22s,box-shadow 0.22s;}
+.bm-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.09);}
+.bm-card-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:44px;background:linear-gradient(145deg,#EBF6FC,#FDF0F7);overflow:hidden;}
+.bm-card-img img{width:100%;height:100%;object-fit:cover;}
+.bm-card-body{padding:10px 11px 12px;}
+.bm-card-name{font-size:12px;font-weight:600;color:var(--dark);margin-bottom:5px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.bm-card-price{font-size:15px;font-weight:800;color:var(--blue);margin-bottom:9px;}
+.bm-card-price s{font-size:11px;color:var(--light);font-weight:400;margin-left:4px;}
+.bm-add-btn{width:100%;padding:8px 0;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--pink));color:#fff;border:none;font-size:12px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:opacity 0.18s;}
+.bm-add-btn:hover{opacity:0.88;}
+.bm-empty{grid-column:1/-1;text-align:center;padding:48px 0;color:var(--light);font-size:14px;}
+/* ── PRODUCT CARD TRUST TAGS ── */
+.ptags-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:7px;}
+.ptag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;background:var(--blue-light);color:var(--blue-2);letter-spacing:.2px;}
+
+/* ── PRODUCT DETAIL NEW SECTIONS ── */
+.pd-forwho{background:var(--blue-light);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:12px 16px;margin-bottom:16px;}
+.pd-forwho .fw-label{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px;}
+.pd-forwho p{font-size:14px;color:var(--mid);line-height:1.55;}
+.pd-benefits{margin-bottom:16px;}
+.pd-benefits .ben-label{font-size:12px;font-weight:700;color:var(--dark);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.ben-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.ben-list li{font-size:13px;color:var(--mid);display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
+.ben-list li::before{content:'✓';color:var(--green);font-weight:800;font-size:13px;flex-shrink:0;margin-top:1px;}
+.pd-howto{background:#F9F5F0;border-radius:12px;padding:14px 16px;margin-bottom:20px;}
+.pd-howto .ht-label{font-size:11px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px;}
+.pd-howto p{font-size:13px;color:var(--mid);line-height:1.55;}
+.pd-upsell-label{font-size:12px;font-weight:700;color:var(--mid);text-transform:uppercase;letter-spacing:.6px;margin:20px 0 10px;padding-top:20px;border-top:1px solid var(--border);}
+
+/* ── WHY US REWRITE ── */
+.why-card h4{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px;}
+.why-card p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;}
+
+/* ── SOCIAL PROOF HONEST COPY ── */
+.review-verified{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--green);margin-top:8px;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════════ -->
+<div id="page-home">
+
+<!-- 1. TOP BAR -->
+<div id="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-item">🚚 <span>Dërgesa falas mbi 50€</span></div>
+      <div class="topbar-item">💵 <span>Cash on Delivery — pagoni kur merrni</span></div>
+      <div class="topbar-item">↩️ <span>Kthim brenda 14 ditëve</span></div>
+      <div class="topbar-item">✅ <span>Produkte të certifikuara EU</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. NAVBAR -->
+<nav id="navbar" style="position:relative;">
+  <div class="nav-inner">
+    <span class="logo" onclick="showPage('home')"><span class="beb">Beb</span><span class="ix">iX</span></span>
+    <ul class="nav-links">
+      <li><a onclick="showCat('karroca')">Karroca</a></li>
+      <li><a onclick="showCat('shtretr')">Shtretër</a></li>
+      <li><a onclick="showCat('ulese')">Ulëse Veture</a></li>
+      <li><a onclick="showCat('lodra')">Lodra</a></li>
+      <li><a onclick="showCat('biberona')">Biberona</a></li>
+      <li><a onclick="showCat('higjiene')">Higjienë</a></li>
+    </ul>
+    <div class="nav-actions">
+      <!-- Desktop search -->
+      <div class="nav-search">
+        <svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:var(--light);fill:none;stroke-width:2;flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" placeholder="Kërko produkte..." id="search-inp" oninput="handleSearch()">
+      </div>
+      <!-- Mobile search toggle button -->
+      <button class="nav-search-mobile-btn" onclick="toggleMobileSearch()" title="Kërko" id="mobile-search-btn">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <!-- Favorites -->
+      <button class="nav-icon-btn" onclick="openFav()" title="Të preferuarat">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="nav-badge" id="fav-badge">0</span>
+      </button>
+      <!-- Cart -->
+      <button class="nav-icon-btn" onclick="openCart()" title="Shporta">
+        <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="nav-badge" id="cart-badge">0</span>
+      </button>
+      <!-- WhatsApp -->
+      <button class="wa-nav-btn" onclick="openWA()">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.562 4.14 1.54 5.877L0 24l6.324-1.51A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.816 9.816 0 01-5.006-1.366l-.36-.214-3.748.895.928-3.637-.234-.374A9.778 9.778 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        Porosit tani
+      </button>
+    </div>
+  </div>
+  <!-- Mobile search dropdown -->
+  <div class="mobile-search-drop" id="mobile-search-drop">
+    <input type="text" placeholder="Kërko produkte BebiX..." id="search-inp-mobile" oninput="handleSearchMobile()" autofocus>
+  </div>
+</nav>
+
+<!-- 3. HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-blob-1"></div>
+    <div class="hero-blob-2"></div>
+    <div class="hero-stars" id="hero-stars"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-text">Certifikim EU · Standarde Ndërkombëtare</span>
+      </div>
+      <h1>Produkte të sigurta<br>për <em>çdo fazë</em><br>të rritjes.</h1>
+      <p class="hero-sub">Zgjedhim vetëm produkte me certifikim EU. Dërgojmë <strong>brenda 24 orëve</strong> në çdo qytet të Kosovës. <strong>Paguani kur t'i merrni</strong> — pa kartë, pa rrezik.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary btn-lg" onclick="document.getElementById('zgjedhja').scrollIntoView({behavior:'smooth'})">Shfleto Produktet</button>
+        <button class="btn btn-outline" onclick="openWA()">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="#25D366" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.562 4.14 1.54 5.877L0 24l6.324-1.51A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.816 9.816 0 01-5.006-1.366l-.36-.214-3.748.895.928-3.637-.234-.374A9.778 9.778 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          Na Pyesni në WhatsApp
+        </button>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-avatars">
+          <span>👩</span><span>👨</span><span>👩</span><span>👨</span><span>+</span>
+        </div>
+        <p class="proof-text"><strong>2,500+ prindër</strong> na kanë besuar deri tani</p>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-wrap">🍼</div>
+      <div class="hero-float-1">
+        <div class="float-icon">✅</div>
+        <div><div class="float-label">Certifikuar</div><div class="float-val">Standarde EU</div></div>
+      </div>
+      <div class="hero-float-2">
+        <div class="float-icon">💵</div>
+        <div><div class="float-label">Pagesa</div><div class="float-val">Kur t'i merrni</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. TRUST BAR -->
+<section id="trust-bar">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-item"><div class="trust-ico blue">🚚</div><div class="trust-text"><strong>Dërgesa brenda 24h</strong><span>Çdo qytet i Kosovës</span></div></div>
+      <div class="trust-item"><div class="trust-ico green">💵</div><div class="trust-text"><strong>Pagoni kur merrni</strong><span>Cash on Delivery — pa kartë</span></div></div>
+      <div class="trust-item"><div class="trust-ico gold">🛡️</div><div class="trust-text"><strong>Certifikim EU</strong><span>CE Mark · Teste sigurie</span></div></div>
+      <div class="trust-item"><div class="trust-ico pink">↩️</div><div class="trust-text"><strong>Kthim 14 ditë</strong><span>Pa pyetje · Pa kosto</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS SLIDER -->
+<section id="brands-section">
+  <div class="brands-header">
+    <span class="brands-eyebrow">Brendet tona</span>
+    <h2 class="brands-title">Zgjidhni sipas<br><em>Brendit</em></h2>
+  </div>
+  <div class="brands-track-wrap">
+    <div class="brands-track" id="brands-track">
+
+      <!-- Kidilo -->
+      <div class="brand-pill" onclick="openBrandModal('kidilo')">
+        <div class="brand-circle" style="background:linear-gradient(145deg,#EBF6FC,#c8e9f6)">
+          <svg viewBox="0 0 60 60" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="28" fill="#4BA8D4" opacity=".15"/>
+            <text x="30" y="36" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#2d8fb8">KDL</text>
+          </svg>
+        </div>
+        <span class="brand-name">Kidilo</span>
+      </div>
+
+      <!-- Philips Avent -->
+      <div class="brand-pill" onclick="openBrandModal('avent')">
+        <div class="brand-circle" style="background:#fff;box-shadow:0 4px 18px rgba(0,0,0,0.08),inset 0 0 0 1.5px rgba(0,0,0,0.06)">
+          <svg viewBox="0 0 120 40" width="68" height="23" xmlns="http://www.w3.org/2000/svg">
+            <rect width="120" height="40" fill="white"/>
+            <!-- Philips shield -->
+            <path d="M8 8 L8 32 Q8 36 12 36 L20 36 Q24 36 24 32 L24 8 Z" fill="#0066A1"/>
+            <circle cx="16" cy="16" r="3" fill="white"/>
+            <circle cx="16" cy="24" r="3" fill="white"/>
+            <!-- AVENT text -->
+            <text x="30" y="26" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#0066A1">AVENT</text>
+          </svg>
+        </div>
+        <span class="brand-name">Philips Avent</span>
+      </div>
+
+      <!-- NUK -->
+      <div class="brand-pill" onclick="openBrandModal('nuk')">
+        <div class="brand-circle" style="background:#fff;box-shadow:0 4px 18px rgba(0,0,0,0.08),inset 0 0 0 1.5px rgba(0,0,0,0.06)">
+          <svg viewBox="0 0 80 40" width="54" height="27" xmlns="http://www.w3.org/2000/svg">
+            <rect width="80" height="40" fill="white"/>
+            <text x="40" y="29" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="26" font-weight="900" fill="#E4002B" letter-spacing="2">NUK</text>
+          </svg>
+        </div>
+        <span class="brand-name">NUK</span>
+      </div>
+
+      <!-- Dr. Brown's -->
+      <div class="brand-pill" onclick="openBrandModal('drb')">
+        <div class="brand-circle" style="background:#fff;box-shadow:0 4px 18px rgba(0,0,0,0.08),inset 0 0 0 1.5px rgba(0,0,0,0.06)">
+          <svg viewBox="0 0 90 50" width="58" height="32" xmlns="http://www.w3.org/2000/svg">
+            <rect width="90" height="50" fill="white"/>
+            <text x="45" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#003087">Dr. Brown's</text>
+            <rect x="10" y="24" width="70" height="3" rx="1.5" fill="#003087" opacity=".3"/>
+            <text x="45" y="38" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#003087">Natural Flow</text>
+          </svg>
+        </div>
+        <span class="brand-name">Dr. Brown's</span>
+      </div>
+
+      <!-- Chicco -->
+      <div class="brand-pill" onclick="openBrandModal('chicco')">
+        <div class="brand-circle" style="background:#fff;box-shadow:0 4px 18px rgba(0,0,0,0.08),inset 0 0 0 1.5px rgba(0,0,0,0.06)">
+          <svg viewBox="0 0 100 40" width="62" height="25" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="40" fill="white"/>
+            <!-- Chicco red dot above -->
+            <circle cx="50" cy="7" r="5" fill="#E4002B"/>
+            <text x="50" y="32" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#E4002B" letter-spacing="1">chicco</text>
+          </svg>
+        </div>
+        <span class="brand-name">Chicco</span>
+      </div>
+
+      <!-- MAM -->
+      <div class="brand-pill" onclick="openBrandModal('mam')">
+        <div class="brand-circle" style="background:#fff;box-shadow:0 4px 18px rgba(0,0,0,0.08),inset 0 0 0 1.5px rgba(0,0,0,0.06)">
+          <svg viewBox="0 0 80 40" width="52" height="26" xmlns="http://www.w3.org/2000/svg">
+            <rect width="80" height="40" fill="white"/>
+            <text x="40" y="28" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="24" font-weight="900" fill="#6B2D8B" letter-spacing="3">MAM</text>
+          </svg>
+        </div>
+        <span class="brand-name">MAM</span>
+      </div>
+
+      <!-- Momcozy -->
+      <div class="brand-pill" onclick="openBrandModal('momcozy')">
+        <div class="brand-circle" style="background:#fff;box-shadow:0 4px 18px rgba(0,0,0,0.08),inset 0 0 0 1.5px rgba(0,0,0,0.06)">
+          <svg viewBox="0 0 110 40" width="66" height="24" xmlns="http://www.w3.org/2000/svg">
+            <rect width="110" height="40" fill="white"/>
+            <text x="55" y="27" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#E91E8C" letter-spacing="0.5">momcozy</text>
+            <!-- heart accent -->
+            <path d="M52 10 C52 8 50 7 49 8 C48 7 46 8 46 10 C46 12 49 14 49 14 C49 14 52 12 52 10Z" fill="#E91E8C" transform="translate(5,0)" opacity=".7"/>
+          </svg>
+        </div>
+        <span class="brand-name">Momcozy</span>
+      </div>
+
+      <!-- Tommee Tippee -->
+      <div class="brand-pill" onclick="openBrandModal('tommee')">
+        <div class="brand-circle" style="background:#fff;box-shadow:0 4px 18px rgba(0,0,0,0.08),inset 0 0 0 1.5px rgba(0,0,0,0.06)">
+          <svg viewBox="0 0 90 50" width="56" height="31" xmlns="http://www.w3.org/2000/svg">
+            <rect width="90" height="50" fill="white"/>
+            <text x="45" y="20" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#E4002B">tommee</text>
+            <text x="45" y="35" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#E4002B">tippee</text>
+          </svg>
+        </div>
+        <span class="brand-name">Tommee Tippee</span>
+      </div>
+
+      <!-- Sophie la Girafe -->
+      <div class="brand-pill" onclick="openBrandModal('sophie')">
+        <div class="brand-circle" style="background:linear-gradient(145deg,#FEF3C7,#fde68a)">
+          <svg viewBox="0 0 50 50" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Giraffe simplified -->
+            <ellipse cx="25" cy="32" rx="10" ry="12" fill="#E8973A"/>
+            <rect x="22" y="12" width="6" height="18" rx="3" fill="#E8973A"/>
+            <ellipse cx="25" cy="10" rx="7" ry="6" fill="#E8973A"/>
+            <circle cx="22" cy="8" r="2" fill="#E8973A"/>
+            <circle cx="28" cy="8" r="2" fill="#E8973A"/>
+            <circle cx="23" cy="9" r="1" fill="#3D1C00"/>
+            <circle cx="27" cy="9" r="1" fill="#3D1C00"/>
+            <!-- spots -->
+            <ellipse cx="22" cy="28" rx="2.5" ry="2" fill="#C47A20" opacity=".6"/>
+            <ellipse cx="29" cy="34" rx="2" ry="2.5" fill="#C47A20" opacity=".6"/>
+            <ellipse cx="24" cy="38" rx="2" ry="1.5" fill="#C47A20" opacity=".6"/>
+          </svg>
+        </div>
+        <span class="brand-name">Sophie la Girafe</span>
+      </div>
+
+      <!-- BIBS -->
+      <div class="brand-pill" onclick="openBrandModal('bibs')">
+        <div class="brand-circle" style="background:#2C2C2C">
+          <svg viewBox="0 0 70 30" width="46" height="20" xmlns="http://www.w3.org/2000/svg">
+            <text x="35" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="bold" fill="white" letter-spacing="3">BIBS</text>
+          </svg>
+        </div>
+        <span class="brand-name">Bibs</span>
+      </div>
+
+      <!-- Lotta -->
+      <div class="brand-pill" onclick="openBrandModal('lotta')">
+        <div class="brand-circle" style="background:linear-gradient(145deg,#F5F0FF,#ddd6fe)">
+          <svg viewBox="0 0 70 30" width="46" height="20" xmlns="http://www.w3.org/2000/svg">
+            <text x="35" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="18" font-weight="bold" fill="#7C3AED" letter-spacing="1">LOTTA</text>
+          </svg>
+        </div>
+        <span class="brand-name">Lotta</span>
+      </div>
+
+      <!-- IsoBx -->
+      <div class="brand-pill" onclick="openBrandModal('isobx')">
+        <div class="brand-circle" style="background:linear-gradient(145deg,#FFF1F2,#fecdd3)">
+          <svg viewBox="0 0 70 30" width="46" height="20" xmlns="http://www.w3.org/2000/svg">
+            <text x="35" y="22" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="900" fill="#E11D48" letter-spacing="1">IsoBx</text>
+          </svg>
+        </div>
+        <span class="brand-name">IsoBx</span>
+      </div>
+
+      <!-- Canpol -->
+      <div class="brand-pill" onclick="openBrandModal('canpol')">
+        <div class="brand-circle" style="background:linear-gradient(145deg,#FFF0F6,#fda4ba)">
+          <svg viewBox="0 0 80 36" width="52" height="23" xmlns="http://www.w3.org/2000/svg">
+            <text x="40" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#BE185D">canpol</text>
+            <text x="40" y="28" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#BE185D">babies</text>
+          </svg>
+        </div>
+        <span class="brand-name">Canpol Babies</span>
+      </div>
+
+      <!-- Graco -->
+      <div class="brand-pill" onclick="openBrandModal('graco')">
+        <div class="brand-circle" style="background:linear-gradient(145deg,#F0F9FF,#7dd3fc)">
+          <svg viewBox="0 0 80 30" width="52" height="20" xmlns="http://www.w3.org/2000/svg">
+            <text x="40" y="22" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="900" fill="#0369a1" letter-spacing="1">graco</text>
+          </svg>
+        </div>
+        <span class="brand-name">Graco</span>
+      </div>
+
+      <!-- BabyBjörn -->
+      <div class="brand-pill" onclick="openBrandModal('babybjorn')">
+        <div class="brand-circle" style="background:#1A1A1A">
+          <svg viewBox="0 0 80 36" width="52" height="23" xmlns="http://www.w3.org/2000/svg">
+            <text x="40" y="15" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="white" letter-spacing="0.5">BABY</text>
+            <text x="40" y="28" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="white" letter-spacing="0.5">BJÖRN</text>
+          </svg>
+        </div>
+        <span class="brand-name">BabyBjörn</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BRAND MODAL -->
+<div class="brand-modal-bg" id="brand-modal-bg" onclick="closeBrandModal()">
+  <div class="brand-modal" id="brand-modal" onclick="event.stopPropagation()">
+    <div class="bm-head">
+      <div class="bm-head-left">
+        <div class="bm-icon" id="bm-icon"></div>
+        <div>
+          <div class="bm-name" id="bm-name"></div>
+          <div class="bm-count" id="bm-count"></div>
+        </div>
+      </div>
+      <button class="bm-close" onclick="closeBrandModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="bm-grid" id="bm-grid"></div>
+  </div>
+</div>
+
+<!-- 7. ZGJEDHJA E PRINDËRVE -->
+<section class="section" id="zgjedhja" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag" style="background:var(--pink-light);color:var(--pink);">👶 Produkte të Rekomanduara</div>
+      <h2>Zgjedhur me kujdes<br>për bebin tuaj</h2>
+      <p>Secili produkt i zgjedhur bazuar në siguri, kualitet materiali dhe vlerësime reale të prindërve</p>
+    </div>
+
+    <!-- Category filter tabs -->
+    <div class="zp-tabs" id="zp-tabs">
+      <button class="zp-tab active" onclick="zpFilter('all',this)">🛒 Të gjitha</button>
+      <button class="zp-tab" onclick="zpFilter('karroca',this)">🍼 Karroca</button>
+      <button class="zp-tab" onclick="zpFilter('shtretr',this)">🛏 Shtretër</button>
+      <button class="zp-tab" onclick="zpFilter('ulese',this)">🚗 Ulëse Veture</button>
+      <button class="zp-tab" onclick="zpFilter('lodra',this)">🧸 Lodra</button>
+      <button class="zp-tab" onclick="zpFilter('biberona',this)">🍶 Biberona</button>
+    </div>
+
+    <div class="grid-4" id="zp-grid"></div>
+
+    <div style="text-align:center;margin-top:32px;">
+      <button class="btn btn-outline" onclick="showCat('all')">Shiko të gjitha produktet →</button>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CATEGORIES -->
+<section class="section" id="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">🗂 Kategoritë</div>
+      <h2>Gjej Sipas Nevojës</h2>
+      <p>Mbi 1000 produkte të ndara sipas kategorive</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card" onclick="showCat('karroca')">
+        <div class="cat-bg">🍼</div>
+        <div class="cat-overlay"></div>
+        <div class="cat-count-badge">24 prod.</div>
+        <div class="cat-info"><h4>Karroca</h4><span>Shiko të gjitha <span class="cat-arrow">→</span></span></div>
+      </div>
+      <div class="cat-card" onclick="showCat('shtretr')">
+        <div class="cat-bg">🛏</div>
+        <div class="cat-overlay"></div>
+        <div class="cat-count-badge">18 prod.</div>
+        <div class="cat-info"><h4>Shtretër</h4><span>Shiko të gjitha <span class="cat-arrow">→</span></span></div>
+      </div>
+      <div class="cat-card" onclick="showCat('ulese')">
+        <div class="cat-bg">🚗</div>
+        <div class="cat-overlay"></div>
+        <div class="cat-count-badge">12 prod.</div>
+        <div class="cat-info"><h4>Ulëse Veture</h4><span>Shiko të gjitha <span class="cat-arrow">→</span></span></div>
+      </div>
+      <div class="cat-card" onclick="showCat('lodra')">
+        <div class="cat-bg">🧸</div>
+        <div class="cat-overlay"></div>
+        <div class="cat-count-badge">85 prod.</div>
+        <div class="cat-info"><h4>Lodra</h4><span>Shiko të gjitha <span class="cat-arrow">→</span></span></div>
+      </div>
+      <div class="cat-card" onclick="showCat('biberona')">
+        <div class="cat-bg">🍶</div>
+        <div class="cat-overlay"></div>
+        <div class="cat-count-badge">22 prod.</div>
+        <div class="cat-info"><h4>Biberona</h4><span>Shiko të gjitha <span class="cat-arrow">→</span></span></div>
+      </div>
+      <div class="cat-card" onclick="showCat('higjiene')">
+        <div class="cat-bg">🧴</div>
+        <div class="cat-overlay"></div>
+        <div class="cat-count-badge">42 prod.</div>
+        <div class="cat-info"><h4>Higjienë</h4><span>Shiko të gjitha <span class="cat-arrow">→</span></span></div>
+      </div>
+      <div class="cat-card" onclick="showCat('luhatese')">
+        <div class="cat-bg">🪑</div>
+        <div class="cat-overlay"></div>
+        <div class="cat-count-badge">9 prod.</div>
+        <div class="cat-info"><h4>Luhatëse</h4><span>Shiko të gjitha <span class="cat-arrow">→</span></span></div>
+      </div>
+      <div class="cat-card" onclick="showCat('nena')">
+        <div class="cat-bg">🤱</div>
+        <div class="cat-overlay"></div>
+        <div class="cat-count-badge">31 prod.</div>
+        <div class="cat-info"><h4>Për Nënën</h4><span>Shiko të gjitha <span class="cat-arrow">→</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. SOCIAL PROOF -->
+<section class="section" id="social-proof">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">⭐ Vlerësimet</div>
+      <h2>Çfarë thonë prindërit</h2>
+      <p>Vlerësime reale nga blerës të verifikuar — pa filtra</p>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card blue"><div class="stat-num">2.5K+</div><p>Porosi të dorëzuara</p></div>
+      <div class="stat-card gold"><div class="stat-num">4.9★</div><p>Vlerësim mesatar</p></div>
+      <div class="stat-card pink"><div class="stat-num">312</div><p>Recensione reale</p></div>
+      <div class="stat-card green"><div class="stat-num">98%</div><p>Klientë që kthehen</p></div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-top">
+          <div class="reviewer-avatar">👩</div>
+          <div class="reviewer-info"><strong>Arta Mustafa</strong><span>Prishtinë · Mars 2025</span></div>
+        </div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">"Karroca arriti brenda 18 orëve. Paketimi ishte i kujdesshëm, druri është i vërtetë. Nuk kisha asnjë dyshim — ia vlen plotësisht."</p>
+        <span class="review-product">🛒 Karrocë Kidilo 4në1</span>
+        <div class="review-verified">✓ Blerës i verifikuar</div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="reviewer-avatar">👨</div>
+          <div class="reviewer-info"><strong>Besnik Gashi</strong><span>Ferizaj · Shkurt 2025</span></div>
+        </div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">"Shtrati LOTTA — druri është natyral, pa erë kimike. Bebja jonë fle qetë. Ekipi u përgjigj brenda 20 min kur pyeta për montim."</p>
+        <span class="review-product">🛏 Shtrat Druri LOTTA</span>
+        <div class="review-verified">✓ Blerës i verifikuar</div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="reviewer-avatar">👩</div>
+          <div class="reviewer-info"><strong>Drita Berisha</strong><span>Pejë · Janar 2025</span></div>
+        </div>
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-text">"Dy herë kam porositur nga BebiX. Cash on Delivery e bën të lehtë — sheh produktin, pastaj paguan. Nuk kam pasur asnjë problem."</p>
+        <span class="review-product">🚗 Ulëse Kidilo IsoBx</span>
+        <div class="review-verified">✓ Blerës i verifikuar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. WHY US -->
+<section class="section" id="why-us">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag">🏆 Pse BebiX</div>
+      <h2>Çfarë e bën BebiX<br>të ndryshme</h2>
+      <p>Nuk shesim thjesht produkte — ofrojmë siguri dhe qetësi mendore</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-ico b">🛡️</div>
+        <h4>Vetëm produkte të certifikuara</h4>
+        <p>Çdo produkt ka certifikim CE të Bashkimit Europian. Kjo nuk është zgjedhje — është standard minimal që ne e respektojmë.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ico p">🚚</div>
+        <h4>Dërgesa reale brenda 24h</h4>
+        <p>Dorëzimi brenda 24 orëve të punës. Nëse porosisni para orës 14:00, produkti niset të njëjtën ditë.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ico g">💵</div>
+        <h4>Pagoni kur shihni produktin</h4>
+        <p>Cash on Delivery nuk është thjesht opsion — është mënyra jonë e vetme e pagesës. Asnjë kartë, asnjë pagesë paraprake.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ico b">💬</div>
+        <h4>Këshillë njerëzore në WhatsApp</h4>
+        <p>Nëse keni dyshim mes dy produkteve, na shkruani. Ju ndihmojmë të zgjidhni atë që i përshtatet situatës tuaj — pa presion.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ico p">↩️</div>
+        <h4>Kthim pa komplikim — 14 ditë</h4>
+        <p>Nëse produkti nuk është siç pritej, e ktheni brenda 14 ditëve. Rimbursimi bëhet pa pyetje shtesë.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-ico g">📋</div>
+        <h4>Informacion i plotë e i ndershëm</h4>
+        <p>Çdo produkt ka mosha saktë, materiale, mënyrë përdorimi. Nuk fshehim asgjë — e lexoni gjithçka para se të blini.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. HOW IT WORKS -->
+<section class="section" id="how-it-works" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag" style="background:var(--blue-light);color:var(--blue);">📦 Si funksionon</div>
+      <h2>Nga zgjedhja deri<br>tek dera juaj</h2>
+      <p>Procesi i porosisë — hap pas hapi, pa surpriza</p>
+    </div>
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-num s1">🔍</div>
+        <h4>Zgjidhni produktin</h4>
+        <p>Lexoni përshkrimin, materialet dhe moshën e rekomanduar. Nëse keni pyetje, na shkruani para blerjes.</p>
+      </div>
+      <div class="step">
+        <div class="step-num s2">📋</div>
+        <h4>Plotësoni adresën</h4>
+        <p>Emri, telefoni dhe adresa. Asgjë tjetër. Nuk nevojitet kartë bankare apo llogari online.</p>
+      </div>
+      <div class="step">
+        <div class="step-num s3">🚚</div>
+        <h4>Merrni dhe paguani</h4>
+        <p>Korrieri vjen tek ju brenda 24h. E shihni produktin, dhe pastaj paguani. Kaq thjeshtë.</p>
+      </div>
+    </div>
+    <!-- WhatsApp CTA honest -->
+    <div style="text-align:center;margin-top:44px;padding:28px;background:var(--bg);border-radius:var(--r);border:1.5px solid var(--border);">
+      <p style="font-size:15px;color:var(--mid);margin-bottom:16px;">Preferoni të porosisni direkt? Shkruani na në WhatsApp dhe konfirmojmë porosinë brenda 30 minutave.</p>
+      <button class="btn btn-primary" onclick="openWA()">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.562 4.14 1.54 5.877L0 24l6.324-1.51A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.816 9.816 0 01-5.006-1.366l-.36-.214-3.748.895.928-3.637-.234-.374A9.778 9.778 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        Porosisni përmes WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- 12. FAQ -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="tag" style="background:var(--blue-light);color:var(--blue);">❓ Pyetjet tuaja</div>
+      <h2>Pyetje të shpeshta</h2>
+      <p>Përgjigjet e pyetjeve që marrim çdo ditë</p>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">A duhet të paguaj para se të marr produktin? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Jo. Ofrojmë vetëm Cash on Delivery. Paguani direkt tek korrieri kur merrni produktin fizikisht. Nuk ka asnjë pagesë paraprake, asnjë depozitë, asnjë kartë bankare të nevojshme.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Sa kohë merr dërgesa? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Brenda 24 orëve të punës në çdo qytet të Kosovës. Porositë e bëra para orës 14:00 dërgohen të njëjtën ditë. Do njoftoheni me SMS ose WhatsApp sapo produkti të nisë.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Si e di që produktet janë të sigurta për fëmijë? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Të gjitha produktet tona kanë certifikim CE të Bashkimit Europian — ky certifikim kërkon teste të detyrueshme sigurie, kimike dhe fizike. Punojmë vetëm me distributor të autorizuar, dhe çdo produkt ka dokumentacion origjinal.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Çfarë ndodh nëse produkti ka defekt ose dëmtohet gjatë transportit? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Na kontaktoni brenda 14 ditëve — me foto të produktit. Zëvendësojmë ose rimbursojmë plotësisht, pa asnjë kosto shtesë. Garancia mbulon defektet e prodhimit për 12–24 muaj sipas produktit.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Mund të porosit direkt nëpërmjet WhatsApp? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Po. Shkruani emrin e produktit, emrin tuaj dhe adresën. Konfirmojmë brenda 30 minutave dhe organizojmë dërgimin. WhatsApp është gjithashtu i përshtatshëm nëse keni pyetje para blerjes — jemi aty.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Mund ta kthej produktin nëse ndërroj mendim? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Po, brenda 14 ditëve nga marrja. Produkti duhet të jetë i papërdorur dhe në paketimin origjinal. Kontaktoni dhe organizojmë kthimin — rimbursimi bëhet brenda 3–5 ditëve pune.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Nuk jam i sigurt cilin produkt të zgjedh — ku mund të marr ndihmë? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Na shkruani në WhatsApp me moshën e bebit dhe çfarë kërkoni — ju rekomandojmë produktin e duhur pa asnjë presion blerjeje. Qëllimi ynë është të zgjidhni saktë, jo të blini sa më shumë.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo"><span class="beb">Beb</span><span class="ix">iX</span></span>
+        <p>Produkte të certifikuara EU për bebë dhe fëmijë të vegjël. Dërgesa 24h në çdo qytet të Kosovës. Cash on Delivery — pagoni vetëm kur merrni.</p>
+        <div class="footer-trust-chips">
+          <span class="ftrust-chip">🛡️ CE Certified</span>
+          <span class="ftrust-chip">💵 Cash on Delivery</span>
+          <span class="ftrust-chip">🚚 Dërgesa 24h</span>
+          <span class="ftrust-chip">↩️ Kthim 14 ditë</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Kategoritë</h5>
+        <ul>
+          <li><a onclick="showCat('karroca')">Karroca</a></li>
+          <li><a onclick="showCat('shtretr')">Shtretër</a></li>
+          <li><a onclick="showCat('ulese')">Ulëse Veture</a></li>
+          <li><a onclick="showCat('lodra')">Lodra</a></li>
+          <li><a onclick="showCat('biberona')">Biberona</a></li>
+          <li><a onclick="showCat('higjiene')">Higjienë</a></li>
+          <li><a onclick="showCat('luhatese')">Luhatëse</a></li>
+          <li><a onclick="showCat('nena')">Për Nënën</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Informacion</h5>
+        <ul>
+          <li><a href="#">Rreth BebiX</a></li>
+          <li><a href="#">Politika e Kthimit</a></li>
+          <li><a href="#">Kushtet e Shërbimit</a></li>
+          <li><a href="#">Privatësia</a></li>
+          <li><a href="#">Si Funksionon</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Kontakti</h5>
+        <div class="footer-contact-item"><span>📧</span> info@bebix.store</div>
+        <div class="footer-contact-item"><span>📞</span> +383 44 000 000</div>
+        <div class="footer-contact-item"><span>💬</span> WhatsApp Support</div>
+        <div class="footer-contact-item"><span>📍</span> Prishtinë, Kosovë</div>
+        <div class="footer-contact-item"><span>🕐</span> E Hënë–Shtunë 9:00–20:00</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 BebiX. Të gjitha të drejtat e rezervuara.</p>
+      <div class="footer-methods">
+        <span class="pay-chip">💵 Cash on Delivery</span>
+        <span class="pay-chip">🚚 Express 24h</span>
+        <span class="pay-chip">✅ Garanci 12 muaj</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /page-home -->
+
+<!-- ═══════════════════════════════════════════
+     PAGE: CATEGORY
+═══════════════════════════════════════════ -->
+<div id="page-category">
+  <div id="topbar" style="background:linear-gradient(90deg,var(--blue),#6bc4e8,var(--pink));color:#fff;font-size:13px;font-weight:600;text-align:center;padding:10px;">
+    🚚 Dërgesa falas mbi 50€ &nbsp;|&nbsp; 💵 Cash on Delivery &nbsp;|&nbsp; ↩️ Kthim 14 ditë
+  </div>
+  <nav id="navbar" style="background:rgba(255,255,255,.96);border-bottom:1.5px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(75,168,212,.10);">
+    <div class="nav-inner">
+      <span class="logo" onclick="showPage('home')"><span class="beb">Beb</span><span class="ix">iX</span></span>
+      <ul class="nav-links">
+        <li><a onclick="showCat('karroca')">Karroca</a></li>
+        <li><a onclick="showCat('shtretr')">Shtretër</a></li>
+        <li><a onclick="showCat('ulese')">Ulëse Veture</a></li>
+        <li><a onclick="showCat('lodra')">Lodra</a></li>
+        <li><a onclick="showCat('biberona')">Biberona</a></li>
+        <li><a onclick="showCat('higjiene')">Higjienë</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" onclick="openFav()"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="nav-badge" id="fav-badge-2">0</span></button>
+        <button class="nav-icon-btn" onclick="openCart()"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="nav-badge" id="cart-badge-2">0</span></button>
+        <button class="wa-nav-btn" onclick="openWA()"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.562 4.14 1.54 5.877L0 24l6.324-1.51A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.816 9.816 0 01-5.006-1.366l-.36-.214-3.748.895.928-3.637-.234-.374A9.778 9.778 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg> Porosit</button>
+      </div>
+    </div>
+  </nav>
+  <div class="section-sm">
+    <div class="wrap">
+      <button class="back-btn" onclick="showPage('home')">← Kthehu</button>
+      <h2 id="cat-title" style="margin-bottom:16px;"></h2>
+      <div class="sub-tag-row" id="sub-tags"></div>
+      <div class="grid-4" id="cat-grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: PRODUCT DETAIL
+═══════════════════════════════════════════ -->
+<div id="page-product">
+  <div style="background:linear-gradient(90deg,var(--blue),#6bc4e8,var(--pink));color:#fff;font-size:13px;font-weight:600;text-align:center;padding:10px;">
+    🚚 Dërgesa falas mbi 50€ &nbsp;|&nbsp; 💵 Cash on Delivery
+  </div>
+  <nav style="background:rgba(255,255,255,.96);border-bottom:1.5px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(75,168,212,.10);">
+    <div class="nav-inner">
+      <span class="logo" onclick="showPage('home')"><span class="beb">Beb</span><span class="ix">iX</span></span>
+      <div class="nav-actions">
+        <button class="nav-icon-btn" onclick="openFav()"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span class="nav-badge" id="fav-badge-3">0</span></button>
+        <button class="nav-icon-btn" onclick="openCart()"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="nav-badge" id="cart-badge-3">0</span></button>
+        <button class="wa-nav-btn" onclick="openWA()"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.562 4.14 1.54 5.877L0 24l6.324-1.51A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.816 9.816 0 01-5.006-1.366l-.36-.214-3.748.895.928-3.637-.234-.374A9.778 9.778 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg> Porosit</button>
+      </div>
+    </div>
+  </nav>
+  <div class="pd-wrap">
+    <button class="back-btn" id="pd-back">← Kthehu</button>
+    <div class="pd-grid">
+      <div class="pd-img-area">
+        <div class="pd-main-img" id="pd-img"></div>
+        <button class="pd-fav-btn" id="pd-fav-btn" onclick="toggleFavPD()">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="pd-info">
+        <div class="pd-breadcrumb"><span onclick="showPage('home')">Kryefaqja</span><span class="sep">›</span><span id="pd-bread-cat"></span><span class="sep">›</span><span id="pd-bread-name" style="color:var(--dark)"></span></div>
+        <div class="pd-badges-row" id="pd-badges"></div>
+        <h1 class="pd-title" id="pd-name"></h1>
+        <div class="pd-rating-row">
+          <div class="stars-row"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <span class="rat-num">4.9</span>
+          <span class="rat-count">(47 vlerësime)</span>
+        </div>
+        <div class="pd-price-row">
+          <span class="pd-price-now" id="pd-price"></span>
+          <span class="pd-price-old" id="pd-price-old"></span>
+          <span class="pd-price-save" id="pd-price-save"></span>
+        </div>
+        <p class="pd-desc" id="pd-desc"></p>
+        <!-- For Who -->
+        <div class="pd-forwho" id="pd-forwho"></div>
+        <!-- Benefits -->
+        <div class="pd-benefits" id="pd-benefits"></div>
+        <!-- Specs -->
+        <div class="pd-specs" id="pd-specs"></div>
+        <!-- How to use -->
+        <div class="pd-howto" id="pd-howto"></div>
+        <div class="pd-actions">
+          <button class="btn-pd-add" id="pd-add-btn">Shto në Shportë</button>
+          <button class="btn-pd-wa" onclick="openWAProduct()">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.562 4.14 1.54 5.877L0 24l6.324-1.51A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.816 9.816 0 01-5.006-1.366l-.36-.214-3.748.895.928-3.637-.234-.374A9.778 9.778 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+            Pyesni / Porosisni në WhatsApp
+          </button>
+        </div>
+        <!-- Cross-sell: complete the setup -->
+        <div class="pd-upsell" id="pd-upsell"></div>
+      </div>
+    </div>
+    <div class="related-wrap">
+      <h2>Produkte të Ngjashme</h2>
+      <div class="slider-container"><div class="slider-track" id="related-track"></div></div>
+      <div class="slider-nav"><button class="sl-btn" onclick="document.getElementById('related-track').scrollLeft-=190">‹</button><button class="sl-btn" onclick="document.getElementById('related-track').scrollLeft+=190">›</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: CHECKOUT
+═══════════════════════════════════════════ -->
+<div id="page-checkout">
+  <div style="background:linear-gradient(90deg,var(--blue),var(--pink));color:#fff;font-size:13px;font-weight:600;text-align:center;padding:10px;">🔒 Porosi e sigurt — Cash on Delivery — Dërgesa 24h</div>
+  <nav style="background:rgba(255,255,255,.96);border-bottom:1.5px solid var(--border);box-shadow:0 2px 12px rgba(75,168,212,.10);">
+    <div class="nav-inner"><span class="logo" onclick="showPage('home')"><span class="beb">Beb</span><span class="ix">iX</span></span></div>
+  </nav>
+  <div class="checkout-wrap">
+    <button class="back-btn" onclick="showPage('home');openCart()">← Kthehu te shporta</button>
+    <div class="ck-header"><h2>Dërgo Porosinë 📦</h2><p>Plotëso detajet e dërgimit — pagesa bëhet kur merrni produktin</p></div>
+    <div class="ck-cod-box"><div class="cod-ico">💵</div><p><strong>Cash on Delivery</strong> — Paguani kur korrieri t'ju sjell produktin tek dera. Asnjë kartë bankare nuk nevojitet.</p></div>
+    <div class="ck-grid">
+      <div class="form-field"><label>Emri *</label><input id="f-name" placeholder="Emri juaj" required></div>
+      <div class="form-field"><label>Mbiemri *</label><input id="f-surname" placeholder="Mbiemri juaj" required></div>
+      <div class="form-field"><label>Telefoni *</label><input id="f-phone" type="tel" placeholder="+383 44 000 000" required></div>
+      <div class="form-field"><label>Email (opsional)</label><input id="f-email" type="email" placeholder="email@juaj.com"></div>
+      <div class="form-field span-2"><label>Adresa *</label><input id="f-address" placeholder="Rruga dhe numri i shtëpisë" required></div>
+      <div class="form-field"><label>Qyteti *</label><input id="f-city" placeholder="Prishtinë" required></div>
+      <div class="form-field"><label>Kodi Postar</label><input id="f-zip" placeholder="10000"></div>
+      <div class="form-field span-2"><label>Shënim shtesë</label><textarea id="f-note" rows="3" placeholder="Çdo udhëzim për dorëzim..."></textarea></div>
+    </div>
+    <div class="ck-summary"><h3>Përmbledhja e Porosisë</h3><div id="ck-lines"></div></div>
+    <button class="btn-place" onclick="placeOrder()">✅ Konfirmo Porosinë — Cash on Delivery</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     PAGE: SUCCESS
+═══════════════════════════════════════════ -->
+<div id="page-success">
+  <nav style="background:rgba(255,255,255,.96);border-bottom:1.5px solid var(--border);">
+    <div class="nav-inner"><span class="logo" onclick="showPage('home')"><span class="beb">Beb</span><span class="ix">iX</span></span></div>
+  </nav>
+  <div class="success-wrap">
+    <div class="suc-icon">🎉</div>
+    <h2>Porosia u Dërgua!</h2>
+    <p class="suc-sub">Faleminderit! Do ju kontaktojmë brenda <strong>2 orëve</strong> për konfirmim. Paguani kur të arrijnë produktet.</p>
+    <div class="order-box"><div class="ob-label">Numri i Porosisë</div><div class="ob-num" id="suc-num">#BBX-000000</div></div>
+    <div class="order-detail" id="suc-detail"></div>
+    <button class="btn-wa-order" onclick="openWA()">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.562 4.14 1.54 5.877L0 24l6.324-1.51A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.816 9.816 0 01-5.006-1.366l-.36-.214-3.748.895.928-3.637-.234-.374A9.778 9.778 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      Na Kontaktoni në WhatsApp
+    </button>
+    <button class="btn btn-outline" style="width:100%" onclick="showPage('home')">← Kthehu në Kryefaqe</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     OVERLAYS & SIDEBARS
+═══════════════════════════════════════════ -->
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<!-- Cart -->
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cs-head"><h3>🛒 Shporta Ime</h3><button class="cs-close" onclick="closeAll()">✕</button></div>
+  <div class="cs-body" id="cart-body"></div>
+  <div class="cs-foot">
+    <div class="cs-cod"><span>💵</span> Pagesa Cash on Delivery kur merrni</div>
+    <div class="cs-total-row"><span>Totali</span><strong id="cart-total">0.00€</strong></div>
+    <button class="btn-checkout-cs" onclick="goCheckout()">Vazhdo Porosinë →</button>
+  </div>
+</div>
+
+<!-- Favorites -->
+<div class="fav-sidebar" id="fav-sidebar">
+  <div class="fs-head"><h3>❤️ Të Preferuarat</h3><button class="cs-close" onclick="closeAll()">✕</button></div>
+  <div class="fs-body" id="fav-body"></div>
+</div>
+
+<!-- Sticky ATC -->
+<div id="sticky-atc">
+  <div class="atc-inner">
+    <div class="atc-info"><div class="atc-thumb" id="atc-thumb">🛒</div><div><div class="atc-name" id="atc-name"></div><div class="atc-price" id="atc-price"></div></div></div>
+    <div class="atc-actions">
+      <div class="atc-qty-wrap"><button class="atc-qty-btn" onclick="atcQty(-1)">−</button><span class="atc-qty-val" id="atc-qty">1</span><button class="atc-qty-btn" onclick="atcQty(1)">+</button></div>
+      <button class="btn btn-pink" onclick="atcAdd()">🛒 Shto Tani</button>
+    </div>
+  </div>
+</div>
+
+<!-- WhatsApp Float -->
+<div class="wa-float">
+  <div class="wa-float-tip">Na shkruani tani! 💬</div>
+  <button class="wa-float-btn" onclick="openWA()">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.562 4.14 1.54 5.877L0 24l6.324-1.51A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.816 9.816 0 01-5.006-1.366l-.36-.214-3.748.895.928-3.637-.234-.374A9.778 9.778 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+  </button>
+</div>
+
+<!-- Exit Intent Popup -->
+<div class="exit-overlay" id="exit-popup">
+  <div class="exit-popup">
+    <button class="ep-close" onclick="closeExit()">✕</button>
+    <div class="ep-icon">🎁</div>
+    <div class="ep-title">Prit! Kemi diçka për ty</div>
+    <p class="ep-sub">Para se të largohesh, ne po të ofrojmë <strong>10% zbritje</strong> për porosinë e parë tënde.</p>
+    <div class="ep-offer"><div>Kodi juaj:</div><div class="ep-code">BEBIX10</div><span>Vlefshëm deri në fund të ditës</span></div>
+    <button class="btn btn-primary btn-lg" style="width:100%" onclick="closeExit()">🛒 Pordor Kodin Tani</button>
+    <p class="ep-note">Duke klikuar, ju pranoni kushtet tona të shërbimit.</p>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ════════════════════════════════
+// CONFIG
+// ════════════════════════════════
+const WA_NUMBER = '38344000000'; // Ndrysho me numrin tënd
+
+// ════════════════════════════════
+// DATA
+// ════════════════════════════════
+const CATS = {
+  karroca:'🍼 Karroca', shtretr:'🛏 Shtretër', ulese:'🚗 Ulëse Veture',
+  lodra:'🧸 Lodra', biberona:'🍶 Biberona', higjiene:'🧴 Higjienë',
+  luhatese:'🪑 Luhatëse', nena:'🤱 Për Nënën', all:'🛒 Të Gjitha'
+};
+const SUBCATS = {
+  karroca:[{v:'all',l:'Të gjitha'},{v:'set',l:'Set'},{v:'klasike',l:'Klasike'},{v:'udhetimi',l:'Udhëtimi'}],
+  shtretr:[{v:'all',l:'Të gjitha'},{v:'druri',l:'Druri'},{v:'bedside',l:'Bedside'},{v:'udhetimi',l:'Udhëtimi'}],
+  ulese:[{v:'all',l:'Të gjitha'},{v:'grup01',l:'Grup 0+1'},{v:'grup123',l:'Grup 1/2/3'}],
+  lodra:[{v:'all',l:'Të gjitha'},{v:'buta',l:'Të Buta'},{v:'druri',l:'Druri'},{v:'muzikore',l:'Muzikore'}],
+  biberona:[{v:'all',l:'Të gjitha'},{v:'bibs',l:'Bibs'},{v:'avent',l:'Avent'},{v:'nuk',l:'NUK'},{v:'set',l:'Set'}],
+  higjiene:[{v:'all',l:'Të gjitha'},{v:'larja',l:'Larja'},{v:'pompa',l:'Pompa Gjiri'}],
+  luhatese:[{v:'all',l:'Të gjitha'},{v:'metalike',l:'Metalike'},{v:'elektrike',l:'Elektrike'}],
+  nena:[{v:'all',l:'Të gjitha'},{v:'pompa',l:'Pompa Gjiri'},{v:'jastek',l:'Jastëk'},{v:'kamera',l:'Kamera'}],
+  all:[]
+};
+
+const P = [
+  {id:1,n:'Karrocë Kidilo – Set 4në1',p:370,op:470,cat:'karroca',sub:'set',ico:'🛒',badge:'sale',stock:3,desc:'Karrocë premium 4në1. Nga lindja deri 4 vjet. Kornizë alumini, amortizues profesional, paloset me një dorë.',tags:['0–4 vjet','Certifikim EU','Alumin'],specs:[['Mosha','0–4 vjet'],['Pesha','12 kg'],['Max kapacitet','22 kg'],['Garancia','2 vjet']],forWho:'Për prindërit që kërkojnë një karrocë që rritet me fëmijën — nga koshi i lindjeve deri në ulëse të madhe.',benefits:['Kornizë alumini e lehtë — e qëndrueshme pa qenë e rëndë','Paloset me një dorë — praktike kur keni duart plot','Sistemi 4në1 — kursen blerje shtesë','Amortizues profesional — rehati për bebe në rrugë të vështira'],howTo:'Montimi kryesor bëhet brenda 10 minutave. Videot e instalimit janë të disponueshme sipas kërkesës në WhatsApp.',related:[2,3,4],upsell:[9,5]},
+  {id:2,n:'Karrocë Kidilo – Set 3në1',p:269,op:300,cat:'karroca',sub:'set',ico:'🛒',badge:'sale',stock:5,desc:'Set ekonomik 3në1. Dizajn kompakt, ideal për qytet.',tags:['0–3 vjet','Kompakt','Certifikim EU'],specs:[['Mosha','0–3 vjet'],['Pesha','9.5 kg']],forWho:'Për prindërit që jetojnë në qytet dhe lëvizin shpesh — lehtë për transport dhe parkim.',benefits:['Pesha vetëm 9.5 kg — e lehtë për ngritje','Dizajn kompakt — kalon lehtë nëpër dyqane','Set i plotë — karrocë, kosh lindjeje, çantë'],howTo:'Paloset lehtë me dy hapa. Udhëzuesi vjen me produktin.',related:[1,3,4],upsell:[9,5]},
+  {id:3,n:'Karrocë Klasike Premium',p:320,op:null,cat:'karroca',sub:'klasike',ico:'🛒',badge:'new',stock:8,desc:'Karrocë elegante me shpinë 5 pozita dhe kapotë UV.',tags:['0–3 vjet','Mbrojtje UV','5 pozita'],specs:[['Mosha','0–3 vjet'],['Pesha','8 kg']],forWho:'Për prindërit që vlerësojnë estetikën dhe funksionalitetin njëkohësisht.',benefits:['Kapotë me mbrojtje UV — mbron nga dielli','Shpinë 5 pozita — nga ulur deri shtrirë plotësisht','Dizajn klasik — nuk kalon nga moda'],howTo:'Montim i thjeshtë pa vegla. Të gjitha opsionet shpjegohen në manual.',related:[1,2,4],upsell:[9]},
+  {id:4,n:'Karrocë Kompakte Udhëtimi',p:199,op:null,cat:'karroca',sub:'udhetimi',ico:'🛒',badge:null,stock:12,desc:'Ultra-kompakte 6.5 kg. Perfekte për avion.',tags:['6m–3 vjet','Avion OK','6.5 kg'],specs:[['Pesha','6.5 kg'],['Avion','Po, kabinë']],forWho:'Për familjet aktive që udhëtojnë shpesh — hyn në kabinë avioni si bagazh dore.',benefits:['Pesha 6.5 kg — më e lehta në kategori','Pranohet si bagazh kabine — kursen kohë','Paloset me një dorë — praktike kudo'],howTo:'Paloset në sekonda. Ideale për udhëtime gjatë gjithë vitit.',related:[1,2,3],upsell:[]},
+  {id:5,n:'Shtrat Druri LOTTA',p:380,op:null,cat:'shtretr',sub:'druri',ico:'🛏',badge:'new',stock:4,desc:'Dru masiv buk i certifikuar. 3 nivele lartësie, pa substanca kimike.',tags:['Dru masiv','BPA-free','0–5 vjet'],specs:[['Materiali','Dru buk masiv'],['Dimensionet','120×60 cm'],['Nivelet','3 pozita'],['Boja','Pa substanca kimike']],forWho:'Për prindërit që kërkojnë shtrat natyral, pa plastikë dhe pa kimikate — siguri maksimale.',benefits:['Dru buk masiv — i qëndrueshëm dhe natyral','Pa substanca kimike — i sigurt nga dita e parë','3 nivele lartësie — adaptohet me moshën','Dizajn skandinav — integrohet në çdo dhomë'],howTo:'Montohet nga dy persona brenda 20 minutave. Vegla janë të përfshira.',related:[6,7,8],upsell:[15]},
+  {id:6,n:'Shtrat Druri Klasik',p:350,op:null,cat:'shtretr',sub:'druri',ico:'🛏',badge:null,stock:7,desc:'Dizajn klasik, stabil dhe i sigurt pa cep të mprehtë.',tags:['Dru ahu','0–5 vjet','Pa cepe'],specs:[['Materiali','Dru ahu'],['Dimensionet','120×60 cm']],forWho:'Për prindërit që preferojnë dizajn klasik dhe të qëndrueshëm.',benefits:['Pa cepe të mprehtë — i projektuar për siguri','Dru ahu natyral — afatgjatë','Shina rregulluese — 2 lartësi'],howTo:'Manual i thjeshtë i përfshirë. Montohet lehtë.',related:[5,7,8],upsell:[]},
+  {id:7,n:'Shtrat Mini Bedside',p:220,op:260,cat:'shtretr',sub:'bedside',ico:'🛏',badge:'sale',stock:2,desc:'Bashkëngjitet me shtrat prindi. Anë e uljes për qasje të lehtë.',tags:['0–6 muaj','Bedside','Ushqyerje natën'],specs:[['Dimensionet','90×60 cm'],['Bashkëngjitje','Po, rregullueshme']],forWho:'Ideal për nënat që ushqejnë gjatë natës — bebja afër pa rrezik.',benefits:['Anë e uljes — qasje e lehtë natën','Bashkëngjitet me shtrat prindi — siguri + afërsi','Dyshek i përfshirë — i qëndrueshëm dhe i frymëmarrshëm'],howTo:'Lartësia rregullohet për t\'u përshtatur me shtrat prindi. Udhëzues i qartë.',related:[5,6,8],upsell:[]},
+  {id:8,n:'Shtrat Udhëtimi Palosës',p:145,op:null,cat:'shtretr',sub:'udhetimi',ico:'🛏',badge:null,stock:15,desc:'Paloset për sekonda. Vjen me çantë transporti.',tags:['0–3 vjet','Palosës','Udhëtim'],specs:[['Pesha','5.2 kg'],['Paloset','Po, sekonda']],forWho:'Për pushime, vizita te gjyshërit ose çdo situatë jashtë shtëpisë.',benefits:['Paloset brenda 5 sekondave','Çantë transporti e përfshirë','Pesha 5.2 kg — e lehtë'],howTo:'Hap dhe mbyll me një lëvizje. Dysheku është i larshëm.',related:[5,6,7],upsell:[]},
+  {id:9,n:'Ulëse Kidilo IsoBx',p:149.99,op:null,cat:'ulese',sub:'grup01',ico:'🚗',badge:'new',stock:6,desc:'ISOFIX grup 0+1. Instalim i lehtë, koke 5 pozita, certifikim ECE R44.',tags:['ISOFIX','0–18 kg','ECE R44'],specs:[['Grupi','0+ / 1 (0–18 kg)'],['Instalim','ISOFIX'],['Certifikim','ECE R44/04'],['Koka','5 pozita']],forWho:'Për prindërit që blejnë ulësen e parë — të sigurtë, me certifikim ndërkombëtar.',benefits:['ISOFIX — instalim i garantuar pa gabime','Certifikim ECE R44 — standard i BE-së','5 pozita koke — rritet me fëmijën','Shuma mbrojtjeje laterale — siguri anash'],howTo:'Klikon direkt në bazën ISOFIX të veturës. Tregues vizual konfirmon instalim korrekt.',related:[10,11],upsell:[1]},
+  {id:10,n:'Ulëse Kidilo IsoBx – Model i Kaluar',p:90,op:120,cat:'ulese',sub:'grup01',ico:'🚗',badge:'sale',stock:0,sold:true,desc:'Model i shitur. Shikoni modelin aktual IsoBx.',tags:['E Shitur'],specs:[['Grupi','0+ / 1']],forWho:'',benefits:[],howTo:'',related:[9,11],upsell:[]},
+  {id:11,n:'Ulëse Grup 1/2/3 Izofix',p:189,op:null,cat:'ulese',sub:'grup123',ico:'🚗',badge:null,stock:9,desc:'9–36 kg. Rritet me fëmijën. Shpinë e hequrshme për fëmijë të mëdhenj.',tags:['9–36 kg','1–12 vjet','ISOFIX'],specs:[['Grupi','1/2/3 (9–36 kg)'],['Mosha','9 muaj–12 vjet'],['Instalim','ISOFIX + rrip']],forWho:'Për prindërit që duan një ulëse që zgjat deri sa fëmija të mos ketë nevojë.',benefits:['Mbron nga 9 kg deri 36 kg','Shpina e hequrshme — bëhet vetëm bazë','ISOFIX i dyfishtë — stabilitet maksimal'],howTo:'Shpina hiqet pa vegla kur fëmija arrin moshën e duhur.',related:[9,10],upsell:[]},
+  {id:12,n:'Lodër e Butë – Mace',p:14.99,op:null,cat:'lodra',sub:'buta',ico:'🐱',badge:null,stock:30,desc:'Tinguj dhe drita stimuluese. Materiale hipoalergjike, pa BPA.',tags:['0+ muaj','BPA-free','Hipoalergjike'],specs:[['Materiali','Pambuk organik'],['Mosha','0+'],['BPA','0%']],forWho:'Për foshnjat nga lindja — stimulon shqisat e parë.',benefits:['Pambuk organik — i butë për lëkurën e ndjeshme','Pa BPA — i sigurt në kontakt me gojën','Tinguj të butë — jo shumë të lartë'],howTo:'Lahet me dorë. Bateritë ndërrohen lehtë nga poshtë.',related:[13,14,15],upsell:[]},
+  {id:13,n:'Lodër e Butë – Qenush',p:14.99,op:null,cat:'lodra',sub:'buta',ico:'🐶',badge:null,stock:28,desc:'Tinguj qetësuese. Shoqëruesi i parë i foshnjës. Hipoalergjike.',tags:['0+ muaj','Qetësuese','Hipoalergjike'],specs:[['Materiali','Pambuk organik'],['Mosha','0+']],forWho:'Foshnjave të reja — shoqëruesi ideal për kohën e gjumit.',benefits:['Tinguj qetësuese — ndihmon me gjumin','Pambuk organik i certifikuar','I larshëm — higjienë e lehtë'],howTo:'Lahet në lavatriçe. Bateritë zgjatin 6+ muaj.',related:[12,14,15],upsell:[]},
+  {id:14,n:'Set Lodra Druri Edukative',p:22.99,op:null,cat:'lodra',sub:'druri',ico:'🧩',badge:'new',stock:20,desc:'12 copë druri natyral. Zhvillon koordinimin dhe kreativitetin. Pa ngjyra kimike.',tags:['12m+','Dru natyral','Montessori'],specs:[['Copët','12 copë'],['Mosha','12 muaj+'],['Materiali','Dru buk natyral']],forWho:'Për fëmijët 1–3 vjeç — lodra edukative Montessori që stimulojnë mendjen.',benefits:['Dru natyral — pa plastikë','Ngjyra natyrale — të sigurta për gojën','Formate gjeometrike — zhvillon logjikën'],howTo:'Çdo copë është e lëmuar dhe pa cep. E sigurt nga 12 muaj.',related:[12,13,15],upsell:[]},
+  {id:15,n:'Luhatëse CocoSway 3D',p:300,op:null,cat:'luhatese',sub:'elektrike',ico:'🪑',badge:'new',stock:3,desc:'Lëvizje 3D që imiton lëkundjen natyrale. Bluetooth, app control, 6 shpejtësi.',tags:['0–9 kg','Bluetooth','3D Motion'],specs:[['Lëvizja','3D Motion'],['Kontrolli','App Bluetooth'],['Kapaciteti','0–9 kg'],['Shpejtësitë','6 nivele']],forWho:'Për prindërit e lodhur — lëkundet vetë ndërkohë që ju çliroheni.',benefits:['Lëvizje 3D natyrale — si lëkundja me dorë','App control — rregulloni nga distanca','6 shpejtësi — gjeni atë që qetëson bebin tuaj','Muzikë e integruar — 20 melodi'],howTo:'Vendoset në çdo sipërfaqe të sheshtë. Kontrollohet nga telefoni. Bateri ose rrymë.',related:[16],upsell:[5]},
+  {id:16,n:'Luhatëse Metalike Premium',p:399.99,op:null,cat:'luhatese',sub:'metalike',ico:'🪑',badge:null,stock:5,desc:'Strukturë metalike e qëndrueshme. 5 shpejtësi, 8 melodi, vibracion.',tags:['0–15 kg','5 shpejtësi','Strukturë çeliku'],specs:[['Shpejtësitë','5 nivele'],['Meloditë','8'],['Kapaciteti','0–15 kg'],['Struktura','Çelik']],forWho:'Për prindërit që duan luhatëse afatgjatë — strukturë e fortë, rreth nga lindja deri 15 kg.',benefits:['Strukturë çeliku — stabile dhe e qëndrueshme','Kapacitet 15 kg — zgjat gjatë','Mbulesa e hequrshme dhe e larshme','Vibracion — opsion shtesë qetësimi'],howTo:'Montohet pa vegla. Mbulesa lahet në lavatriçe.',related:[15],upsell:[]},
+  {id:17,n:'Biberon Bibs – Set 2 copë',p:18.99,op:null,cat:'biberona',sub:'bibs',ico:'🍶',badge:'new',stock:50,desc:'Anti-kolikë, BPA-free, dizajn skandinav minimal. Faza 1 (0–6 muaj).',tags:['BPA-free','Anti-kolikë','0–6 muaj'],specs:[['Kapaciteti','150 & 250 ml'],['BPA','0%'],['Anti-kolikë','Po'],['Faza','1 (0–6 muaj)']],forWho:'Për foshnjat e reja — thithëse e butë që imiton gjirin natyral.',benefits:['BPA-free dhe pa ftalate — 100% i sigurt','Sistemi anti-kolikë — redukton gazrat','Dizajn skandinav minimal — i lehtë për pastrim','Disponueshëm 2 madhësi — 150ml dhe 250ml'],howTo:'Lahet me dorë ose lavastoviqe. Thithëse ndërrohet çdo 2–3 muaj.',related:[18,19,20],upsell:[]},
+  {id:18,n:'Biberon Philips Avent Natural',p:16.99,op:null,cat:'biberona',sub:'avent',ico:'🍶',badge:null,stock:40,desc:'Thithëse natyrale që imiton gjirin. Kalim i lehtë gji–biberon. BPA-free.',tags:['BPA-free','Imiton gjirin','0+ muaj'],specs:[['Kapaciteti','260 ml'],['BPA','0%'],['Thithësja','Natural Response'],['Faza','1 (0–3 muaj)']],forWho:'Për nënat që kombinojnë ushqyerjen me gji dhe biberon — kalon natyrshëm.',benefits:['Thithëse Natural Response — lëshon qumësht vetëm kur beba gëlltit','Formë ergonomike — e lehtë për t\'u mbajtur','BPA-free dhe certifikuar','Montim i thjeshtë — 4 copa'],howTo:'Montohet dhe çmontohet lehtë. Lahet në lavastoviqe (pjesa e sipërme).',related:[17,19,20],upsell:[]},
+  {id:19,n:'Biberon NUK First Choice',p:13.99,op:null,cat:'biberona',sub:'nuk',ico:'🍶',badge:null,stock:45,desc:'Sistemi anti-kolikë NUK Air System. Thithëse ortodontike. BPA-free.',tags:['BPA-free','Ortodontike','Anti-kolikë'],specs:[['Kapaciteti','150 & 300 ml'],['BPA','0%'],['Thithësja','Ortodontike'],['Sistemi','NUK Air System']],forWho:'Për prindërit që janë të ndjeshëm ndaj kolikës — sistemi ajrit parandalon gëlltitjen e ajrit.',benefits:['NUK Air System — redukton kolikën efektivisht','Thithëse ortodontike — mbron zhvillimin e dhëmbëve','2 madhësi — nga 0 muaj','BPA-free i certifikuar'],howTo:'Vrimat e thithëses rregullohen sipas moshës. Udhëzuesi i përfshirë.',related:[17,18,20],upsell:[]},
+  {id:20,n:'Set Biberonash – 5 copë',p:39.99,op:49.99,cat:'biberona',sub:'set',ico:'🍶',badge:'sale',stock:22,desc:'5 biberona: 2×150ml + 3×260ml. Të gjitha BPA-free dhe anti-kolikë.',tags:['BPA-free','Set i plotë','0+ muaj'],specs:[['Copët','2×150ml + 3×260ml'],['BPA','0%'],['Anti-kolikë','Po']],forWho:'Për prindërit e rinj — set i plotë për të gjitha fazat e para.',benefits:['5 biberona — madhësi të ndryshme për çdo fazë','BPA-free të gjitha','Anti-kolikë — qetësi për bebin dhe prindin','Ekonomik — kursen krahasuar me blerje individuale'],howTo:'Biberona e 150ml për 0–3 muaj. Biberona 260ml nga 3 muaj e lart.',related:[17,18,19],upsell:[]},
+  {id:21,n:'Set Korjesh Pastrimi – 4 copë',p:34.99,op:39.99,cat:'higjiene',sub:'larja',ico:'🛁',badge:'sale',stock:18,desc:'Set i plotë: koritë, suport, sitë dhe termometër. Anti-rrëshqitëse. BPA-free.',tags:['BPA-free','Set i plotë','0+ muaj'],specs:[['Copët','4 copë'],['BPA','0%'],['Termometri','Digjital']],forWho:'Për prindërit e rinj — gjithçka për banjën e parë të bebit.',benefits:['4 copë — koritë, suport, sitë, termometër','BPA-free dhe pa PVC','Termometër digjital — temperaturë e saktë','Anti-rrëshqitëse — siguri gjatë larjes'],howTo:'Termometri tregon temperaturën ideale 37°C. Suporti mban bebin drejt.',related:[22],upsell:[]},
+  {id:22,n:'Pompë Gjiri Elektrike Dyfishe',p:89.99,op:109.99,cat:'higjiene',sub:'larja',ico:'🍼',badge:'sale',stock:8,desc:'Pompim dyfishe. 9 nivele intensiteti. Karikues USB-C. Zhurmë <45dB.',tags:['Dyfishe','USB-C','<45 dB'],specs:[['Tipi','Dyfishe elektrike'],['Bateri','3 orë'],['Zhurmë','<45 dB'],['Karikues','USB-C']],forWho:'Për nënat aktive që pompojnë rregullisht — kurseni kohë me pompim dyfishe.',benefits:['Dyfishe — pomponi të dyja anët njëkohësisht','<45dB — e heshtur, mund të përdoret natën','USB-C — karikohet me kablloin e telefonit','9 nivele — gjeni intensitetin e duhur'],howTo:'Vendoset pa vegla. 9 nivele intensiteti nga minimal tek maksimal. Lahet me ujë.',related:[21],upsell:[]},
+  {id:23,n:'Kamerë Monitorimi WiFi 1080p',p:69.99,op:null,cat:'nena',sub:'kamera',ico:'📷',badge:'new',stock:10,desc:'Video 1080p, pamje nate, audio dydrejtimishe, sensor temperature. App iOS+Android.',tags:['1080p','Pamje natën','iOS & Android'],specs:[['Rezolucioni','1080p Full HD'],['Pamje natës','Po, infrared'],['Audio','2-kahësh'],['App','iOS + Android']],forWho:'Për çdo prind — kontrolloni dhomën e bebit nga çdo dhomë e shtëpisë.',benefits:['1080p Full HD — imazh i qartë ditë e natë','Audio 2-kahësh — flisni me bebin nga distanca','Sensor temperature — njoftim nëse dhoma bëhet shumë nxehtë/ftohtë','App falas — pa pagesë mujore'],howTo:'Lidhet me WiFi të shtëpisë brenda 3 minutave. App shkarkohet falas.',related:[24,25],upsell:[]},
+  {id:24,n:'Pompë Gjiri Dyfishe Premium',p:79.99,op:99.99,cat:'nena',sub:'pompa',ico:'🤱',badge:'sale',stock:6,desc:'9 nivele, USB-C, <40dB. Modeli premium për nënat aktive.',tags:['Dyfishe','<40 dB','USB-C'],specs:[['Nivelet','9 intensitete'],['Zhurmë','<40 dB'],['Karikues','USB-C'],['Bateri','3 orë']],forWho:'Për nënat që pompojnë çdo ditë — dizajn diskret, i lehtë, i plotë.',benefits:['Modeli më i heshtur — <40dB','USB-C — karikohet ovuniku','Bateri 3 orë — liri e plotë lëvizjeje','9 nivele presioni — kontroll total'],howTo:'Vendoset lehtë. Lahet nën ujë të rrjedhshëm.',related:[23,25],upsell:[]},
+  {id:25,n:'Jastëk Ushqyerjeje U-formë',p:34.99,op:null,cat:'nena',sub:'jastek',ico:'🛌',badge:null,stock:20,desc:'Ergonomik U-formë. Mbron shpinën e nënës gjatë ushqyerjes.',tags:['Ergonomik','U-formë','Lavstoviqe OK'],specs:[['Forma','U-formë'],['Mbulesa','E hequrshme, e larshme'],['Mbushja','Granula EPS']],forWho:'Për nënat gjatë ushqyerjes — redukton lodhjen e shpatullave dhe shpinës.',benefits:['U-formë ergonomike — pozicion i saktë','Mbulesë e hequrshme — lahet në lavatriçe','Granula EPS — adaptohet sipas trupit','Shërben edhe si mbështetëse gjatë ulesë'],howTo:'Vendoset rreth belit. Bebja vendoset sipër jastëkut. Lahet mbulesja çdo javë.',related:[23,24],upsell:[]}
+];
+
+const BESTSELLER_IDS = [1,7,9,15,20,22,5,17];
+
+// ════════════════════════════════
+// STATE
+// ════════════════════════════════
+let cart = [], favs = [], currentPID = null, currentCat = 'all', currentSub = 'all', stickyQty = 1;
+
+// ════════════════════════════════
+// PAGE ROUTER
+// ════════════════════════════════
+const PAGES = ['page-home','page-category','page-product','page-checkout','page-success'];
+function showPage(name) {
+  PAGES.forEach(id => { const el = document.getElementById(id); if(el) el.style.display = 'none'; });
+  const target = document.getElementById('page-' + name);
+  if(target) target.style.display = 'block';
+  window.scrollTo(0,0);
+  closeAll();
+  if(name === 'home') renderZP('all');
+  updateBadges();
+}
+
+// ════════════════════════════════
+// PRODUCT CARD HTML
+// ════════════════════════════════
+function pCardHTML(p) {
+  if(!p) return '';
+  const isFav = favs.includes(p.id);
+  const inCart = cart.some(c => c.id === p.id);
+  const discount = p.op ? Math.round((1 - p.p/p.op)*100) : 0;
+  const badgeHTML = p.badge==='sale' ? `<span class="pcard-badge sale">-${discount}%</span>`
+    : p.badge==='new' ? `<span class="pcard-badge new">E RE</span>`
+    : p.badge==='hot' ? `<span class="pcard-badge hot">Popullar</span>` : '';
+  const stockTxt = p.sold ? `<div class="pcard-stock">E Shitur</div>` : '';
+  // Trust tags from product data
+  const trustTags = (p.tags||[]).map(t=>`<span class="ptag">${t}</span>`).join('');
+  return `
+  <div class="pcard" onclick="openProduct(${p.id})">
+    <div class="pcard-img">
+      <div class="pcard-badges">${badgeHTML}</div>
+      <button class="pcard-fav ${isFav?'active':''}" onclick="event.stopPropagation();toggleFav(${p.id})" title="Ruaj">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+      ${p.img ? `<img src="${p.img}" alt="${p.n}" onerror="this.style.display='none'">` : ''}
+      <span style="font-size:60px;${p.img?'display:none':''}">${p.ico}</span>
+    </div>
+    <div class="pcard-body">
+      ${trustTags ? `<div class="ptags-row">${trustTags}</div>` : ''}
+      <h3>${p.n}</h3>
+      <div class="pcard-price">
+        <span class="price-now">${p.p.toFixed(2)}€</span>
+        ${p.op ? `<span class="price-old">${p.op.toFixed(2)}€</span>` : ''}
+      </div>
+      ${stockTxt}
+      <button class="btn-add-card" ${p.sold?'disabled':''} onclick="event.stopPropagation();addCart(${p.id})">
+        ${p.sold ? 'E Shitur' : inCart ? '✓ Shtuar' : 'Shto në Shportë'}
+      </button>
+    </div>
+  </div>`;
+}
+
+// ════════════════════════════════
+// BESTSELLERS
+// ════════════════════════════════
+function renderBestsellers() { renderZP('all'); }
+
+// ════════════════════════════════
+// CATEGORY PAGE
+// ════════════════════════════════
+function showCat(cat) {
+  currentCat = cat;
+  currentSub = 'all';
+  document.getElementById('cat-title').textContent = CATS[cat] || cat;
+  const subs = SUBCATS[cat] || [];
+  document.getElementById('sub-tags').innerHTML = subs.map(s =>
+    `<span class="sub-tag ${s.v==='all'?'active':''}" onclick="filterSub('${cat}','${s.v}',this)">${s.l}</span>`
+  ).join('');
+  renderCatGrid(cat, 'all');
+  showPage('category');
+}
+function filterSub(cat, sub, el) {
+  currentSub = sub;
+  document.querySelectorAll('.sub-tag').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderCatGrid(cat, sub);
+}
+function renderCatGrid(cat, sub) {
+  let prods = cat==='all' ? P : P.filter(p=>p.cat===cat);
+  if(sub!=='all') prods = prods.filter(p=>p.sub===sub);
+  const g = document.getElementById('cat-grid');
+  g.innerHTML = prods.length ? prods.map(pCardHTML).join('') : '<p style="color:var(--light);padding:40px 0;grid-column:1/-1;text-align:center;">Nuk u gjetën produkte.</p>';
+}
+
+// ════════════════════════════════
+// PRODUCT DETAIL
+// ════════════════════════════════
+function openProduct(id) {
+  const p = P.find(x=>x.id===id);
+  if(!p) return;
+  currentPID = id;
+  stickyQty = 1;
+
+  document.getElementById('pd-name').textContent = p.n;
+  document.getElementById('pd-bread-cat').textContent = CATS[p.cat]||p.cat;
+  document.getElementById('pd-bread-name').textContent = p.n;
+
+  // Badges — real only, no fake urgency
+  const discount = p.op ? Math.round((1-p.p/p.op)*100) : 0;
+  const tagBadges = (p.tags||[]).map(t=>`<span class="badge badge-blue">${t}</span>`).join('');
+  document.getElementById('pd-badges').innerHTML = tagBadges
+    + (p.badge==='sale' ? `<span class="badge badge-red">-${discount}%</span>` : '')
+    + (p.badge==='new' ? `<span class="badge badge-blue">✨ E Re</span>` : '');
+
+  // Image
+  document.getElementById('pd-img').innerHTML = p.img
+    ? `<img src="${p.img}" alt="${p.n}" style="width:100%;height:100%;object-fit:cover;" onerror="this.outerHTML='<span style=font-size:110px>${p.ico}</span>'">`
+    : `<span style="font-size:110px">${p.ico}</span>`;
+
+  // Price
+  document.getElementById('pd-price').textContent = p.p.toFixed(2)+'€';
+  document.getElementById('pd-price-old').textContent = p.op ? p.op.toFixed(2)+'€' : '';
+  document.getElementById('pd-price-save').textContent = p.op ? `Kurseni ${(p.op-p.p).toFixed(2)}€` : '';
+
+  // Description
+  document.getElementById('pd-desc').textContent = p.desc;
+
+  // For Who
+  const fwEl = document.getElementById('pd-forwho');
+  if (p.forWho) {
+    fwEl.innerHTML = `<div class="fw-label">👤 Për kë është ky produkt</div><p>${p.forWho}</p>`;
+    fwEl.style.display = '';
+  } else { fwEl.style.display = 'none'; }
+
+  // Benefits
+  const benEl = document.getElementById('pd-benefits');
+  if (p.benefits && p.benefits.length) {
+    benEl.innerHTML = `<div class="ben-label">Përse ta zgjidhni</div><ul class="ben-list">${p.benefits.map(b=>`<li>${b}</li>`).join('')}</ul>`;
+    benEl.style.display = '';
+  } else { benEl.style.display = 'none'; }
+
+  // Specs
+  document.getElementById('pd-specs').innerHTML = (p.specs && p.specs.length)
+    ? `<h4>📋 Specifikimet</h4>`+p.specs.map(s=>`<div class="spec-row"><span>${s[0]}</span><span>${s[1]}</span></div>`).join('')
+    : '';
+
+  // How To
+  const htEl = document.getElementById('pd-howto');
+  if (p.howTo) {
+    htEl.innerHTML = `<div class="ht-label">📖 Si përdoret</div><p>${p.howTo}</p>`;
+    htEl.style.display = '';
+  } else { htEl.style.display = 'none'; }
+
+  // Fav
+  document.getElementById('pd-fav-btn').className = 'pd-fav-btn'+(favs.includes(id)?' active':'');
+
+  // Add btn
+  const addBtn = document.getElementById('pd-add-btn');
+  addBtn.textContent = p.sold ? 'E Shitur' : 'Shto në Shportë';
+  addBtn.disabled = !!p.sold;
+  addBtn.onclick = () => addCart(id);
+
+  // Back btn
+  document.getElementById('pd-back').onclick = () => {
+    if(currentCat && currentCat!=='all') showCat(currentCat); else showPage('home');
+  };
+
+  // Upsell — labeled honestly
+  const upsell = (p.upsell||[]).map(uid=>P.find(x=>x.id===uid)).filter(Boolean);
+  document.getElementById('pd-upsell').innerHTML = upsell.length ? `
+    <div class="pd-upsell-label">🔗 Plotëso konfigurimin</div>
+    ${upsell.map(u=>`
+    <div class="upsell-item">
+      <div class="upsell-img">${u.ico}</div>
+      <div class="upsell-info"><strong>${u.n}</strong><span>${(u.tags||[]).slice(0,2).join(' · ')}</span></div>
+      <span class="upsell-price">${u.p.toFixed(2)}€</span>
+      <button class="upsell-add" onclick="addCart(${u.id})">+ Shto</button>
+    </div>`).join('')}` : '';
+
+  // Related slider
+  const rel = (p.related||[]).map(rid=>P.find(x=>x.id===rid)).filter(Boolean);
+  document.getElementById('related-track').innerHTML = rel.map(r=>`
+    <div class="slider-card" onclick="openProduct(${r.id})">
+      <div class="sc-img">${r.ico}</div>
+      <div class="sc-body"><h4>${r.n}</h4><span>${r.p.toFixed(2)}€</span></div>
+    </div>`).join('');
+
+  // Sticky ATC
+  document.getElementById('atc-thumb').textContent = p.ico;
+  document.getElementById('atc-name').textContent = p.n;
+  document.getElementById('atc-price').textContent = p.p.toFixed(2)+'€';
+  document.getElementById('atc-qty').textContent = stickyQty;
+
+  showPage('product');
+  setTimeout(()=>{ document.getElementById('sticky-atc').classList.add('visible'); }, 1500);
+}
+
+function atcQty(d){ stickyQty=Math.max(1,stickyQty+d); document.getElementById('atc-qty').textContent=stickyQty; }
+function atcAdd(){ if(currentPID){ for(let i=0;i<stickyQty;i++) addCart(currentPID,true); showToast(`🛒 ${stickyQty}× shtuar në shportë!`); } }
+
+// ════════════════════════════════
+// CART
+// ════════════════════════════════
+function addCart(id, silent=false) {
+  const p = P.find(x=>x.id===id);
+  if(!p||p.sold) return;
+  const ex = cart.find(c=>c.id===id);
+  if(ex) ex.qty++; else cart.push({id,qty:1});
+  updateBadges();
+  if(!silent) showToast(`✅ ${p.n} u shtua!`);
+  renderBestsellers();
+}
+function openCart() {
+  renderCart();
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('cart-sidebar').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function renderCart() {
+  const body = document.getElementById('cart-body');
+  if(cart.length===0){ body.innerHTML=`<div class="cs-empty"><div class="em-icon">🛒</div><p>Shporta është bosh.<br>Shto produkte për të vazhduar.</p></div>`; document.getElementById('cart-total').textContent='0.00€'; return; }
+  body.innerHTML = cart.map(c=>{
+    const p=P.find(x=>x.id===c.id);
+    return `<div class="cs-item">
+      <div class="csi-img">${p.ico}</div>
+      <div class="csi-info"><h4>${p.n}</h4><div class="csi-price">${(p.p*c.qty).toFixed(2)}€</div>
+      <div class="csi-qty">
+        <button onclick="cQty(${c.id},-1)">−</button><span>${c.qty}</span><button onclick="cQty(${c.id},1)">+</button>
+        <button class="csi-remove" onclick="cRm(${c.id})">🗑</button>
+      </div></div>
+    </div>`;
+  }).join('');
+  const total = cart.reduce((s,c)=>s+P.find(x=>x.id===c.id).p*c.qty,0);
+  document.getElementById('cart-total').textContent=total.toFixed(2)+'€';
+}
+function cQty(id,d){ const i=cart.find(c=>c.id===id); if(!i)return; i.qty+=d; if(i.qty<=0) cart=cart.filter(c=>c.id!==id); renderCart(); updateBadges(); }
+function cRm(id){ cart=cart.filter(c=>c.id!==id); renderCart(); updateBadges(); }
+function goCheckout() {
+  if(!cart.length){ showToast('⚠️ Shporta është bosh!'); return; }
+  closeAll();
+  let total=0;
+  let lines = cart.map(c=>{ const p=P.find(x=>x.id===c.id); const sub=p.p*c.qty; total+=sub; return `<div class="ck-line"><span>${p.ico} ${p.n} ×${c.qty}</span><span>${sub.toFixed(2)}€</span></div>`; }).join('');
+  const shipping = total>=50?0:3;
+  lines+=`<div class="ck-line"><span>🚚 Dërgesa</span><span>${shipping===0?'Falas':'3.00€'}</span></div>`;
+  total+=shipping;
+  lines+=`<div class="ck-line"><span>Totali</span><span>${total.toFixed(2)}€</span></div>`;
+  document.getElementById('ck-lines').innerHTML=lines;
+  showPage('checkout');
+}
+
+// ════════════════════════════════
+// FAVORITES
+// ════════════════════════════════
+function toggleFav(id) {
+  const p=P.find(x=>x.id===id);
+  if(favs.includes(id)){ favs=favs.filter(f=>f!==id); showToast(`💔 Hequr nga të preferuarat`); }
+  else { favs.push(id); showToast(`❤️ ${p.n} — shtuar te të preferuarat!`); }
+  updateBadges(); renderBestsellers();
+}
+function toggleFavPD(){ if(currentPID){ toggleFav(currentPID); const btn=document.getElementById('pd-fav-btn'); btn.classList.toggle('active'); } }
+function openFav() {
+  renderFav();
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('fav-sidebar').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function renderFav() {
+  const body=document.getElementById('fav-body');
+  if(!favs.length){ body.innerHTML=`<div class="cs-empty"><div class="em-icon">🤍</div><p>Asnjë produkt i preferuar.<br>Kliko zemrën te produktet!</p></div>`; return; }
+  body.innerHTML = favs.map(id=>{
+    const p=P.find(x=>x.id===id);
+    return `<div class="fav-item">
+      <div class="fi-img" onclick="closeAll();openProduct(${p.id})">${p.ico}</div>
+      <div class="fi-info" onclick="closeAll();openProduct(${p.id})"><h4>${p.n}</h4><span>${p.p.toFixed(2)}€</span></div>
+      <button class="fi-rm" onclick="toggleFav(${p.id});renderFav()">✕</button>
+    </div>`;
+  }).join('');
+}
+
+// ════════════════════════════════
+// CLOSE ALL OVERLAYS
+// ════════════════════════════════
+function closeAll() {
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('cart-sidebar').classList.remove('open');
+  document.getElementById('fav-sidebar').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// ════════════════════════════════
+// BADGES
+// ════════════════════════════════
+function updateBadges() {
+  const ct=cart.reduce((s,c)=>s+c.qty,0);
+  const ft=favs.length;
+  document.querySelectorAll('[id^="cart-badge"]').forEach(b=>{ b.textContent=ct; b.style.display=ct>0?'flex':'none'; });
+  document.querySelectorAll('[id^="fav-badge"]').forEach(b=>{ b.textContent=ft; b.style.display=ft>0?'flex':'none'; });
+}
+
+// ════════════════════════════════
+// ORDER
+// ════════════════════════════════
+function placeOrder() {
+  const name=document.getElementById('f-name').value.trim();
+  const surname=document.getElementById('f-surname').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const address=document.getElementById('f-address').value.trim();
+  const city=document.getElementById('f-city').value.trim();
+  if(!name||!surname||!phone||!address||!city){ showToast('⚠️ Plotëso fushat me *!'); return; }
+  const email=document.getElementById('f-email').value.trim();
+  const note=document.getElementById('f-note').value.trim();
+  const zip=document.getElementById('f-zip').value.trim();
+  const orderNum='BBX-'+Math.floor(100000+Math.random()*900000);
+  let total=cart.reduce((s,c)=>s+P.find(x=>x.id===c.id).p*c.qty,0);
+  const shipping=total>=50?0:3; total+=shipping;
+  const pList=cart.map(c=>{ const p=P.find(x=>x.id===c.id); return `${p.ico} ${p.n} ×${c.qty} — ${(p.p*c.qty).toFixed(2)}€`; }).join('\n');
+  const waMsg=encodeURIComponent(
+    `🛍️ *POROSI E RE — BebiX*\n\n` +
+    `📦 *Nr. Porosisë:* ${orderNum}\n\n` +
+    `👤 *Klienti:* ${name} ${surname}\n` +
+    `📞 *Telefoni:* ${phone}\n` +
+    `📧 *Email:* ${email||'—'}\n` +
+    `📍 *Adresa:* ${address}, ${city}${zip?' '+zip:''}\n\n` +
+    `🛒 *Produktet:*\n${pList}\n\n` +
+    `🚚 *Dërgesa:* ${shipping===0?'Falas (mbi 50€)':'3.00€'}\n` +
+    `💰 *Totali për t\'u paguar:* ${total.toFixed(2)}€\n` +
+    `💵 *Pagesa:* Cash on Delivery\n` +
+    `📝 *Shënim:* ${note||'—'}`
+  );
+  window.open(`https://wa.me/${WA_NUMBER}?text=${waMsg}`,'_blank');
+  document.getElementById('suc-num').textContent='#'+orderNum;
+  document.getElementById('suc-detail').innerHTML=`<strong>👤 ${name} ${surname}</strong><br>📞 ${phone}${email?' | 📧 '+email:''}<br>📍 ${address}, ${city}<br><br>${pList.replace(/\n/g,'<br>')}<br><br>💰 <strong>Totali: ${total.toFixed(2)}€</strong>`;
+  cart=[]; updateBadges(); showPage('success');
+}
+
+// ════════════════════════════════
+// WHATSAPP — Pre-filled messages
+// ════════════════════════════════
+function openWA() {
+  const msg = encodeURIComponent(
+    'Përshëndetje! Dua të pyes për produktet e BebiX.\n\nA mundeni të më ndihmoni të zgjedh produktin e duhur?'
+  );
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
+}
+
+function openWAProduct() {
+  const p = P.find(x => x.id === currentPID);
+  if (!p) { openWA(); return; }
+  const msg = encodeURIComponent(
+    `Përshëndetje! Jam i/e interesuar për:\n\n` +
+    `📦 *${p.n}*\n` +
+    `💰 Çmimi: ${p.p.toFixed(2)}€\n\n` +
+    `Dëshiroj të porosit ose të pyes diçka rreth këtij produkti.`
+  );
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
+}
+
+// ════════════════════════════════
+// TOAST
+// ════════════════════════════════
+function showToast(msg) {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// ════════════════════════════════
+// MOBILE SEARCH
+// ════════════════════════════════
+function toggleMobileSearch() {
+  const drop = document.getElementById('mobile-search-drop');
+  const inp = document.getElementById('search-inp-mobile');
+  const isOpen = drop.classList.contains('open');
+  drop.classList.toggle('open');
+  if (!isOpen) { setTimeout(()=>inp&&inp.focus(), 80); }
+}
+function handleSearchMobile() {
+  const q = document.getElementById('search-inp-mobile').value.toLowerCase().trim();
+  if (!q) { renderZP('all'); return; }
+  const res = P.filter(p => p.n.toLowerCase().includes(q));
+  const g = document.getElementById('zp-grid');
+  if (g) g.innerHTML = res.length ? res.map(pCardHTML).join('') : '<p style="color:var(--light);grid-column:1/-1;padding:40px 0;text-align:center;">Nuk u gjet asnjë produkt.</p>';
+}
+// Close mobile search when clicking outside
+document.addEventListener('click', e => {
+  const drop = document.getElementById('mobile-search-drop');
+  const btn = document.getElementById('mobile-search-btn');
+  if (drop && btn && !drop.contains(e.target) && !btn.contains(e.target)) {
+    drop.classList.remove('open');
+  }
+});
+// ════════════════════════════════
+// SEARCH
+// ════════════════════════════════
+function handleSearch() {
+  const q=document.getElementById('search-inp').value.toLowerCase().trim();
+  if(!q){ renderZP('all'); return; }
+  const res=P.filter(p=>p.n.toLowerCase().includes(q));
+  const g=document.getElementById('zp-grid');
+  if(g) g.innerHTML=res.length?res.map(pCardHTML).join(''):'<p style="color:var(--light);grid-column:1/-1;padding:40px 0;text-align:center;">Nuk u gjet asnjë produkt.</p>';
+}
+
+// ════════════════════════════════
+// FAQ ACCORDION
+// ════════════════════════════════
+function toggleFaq(btn) {
+  const item=btn.parentElement;
+  const ans=item.querySelector('.faq-a');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>{ i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight='0'; });
+  if(!isOpen){ item.classList.add('open'); ans.style.maxHeight=ans.scrollHeight+'px'; }
+}
+
+// ════════════════════════════════
+// NAVBAR SCROLL EFFECT
+// ════════════════════════════════
+window.addEventListener('scroll',()=>{
+  const nb=document.getElementById('navbar');
+  if(nb) nb.classList.toggle('scrolled',window.scrollY>40);
+  const atc=document.getElementById('sticky-atc');
+  if(atc&&document.getElementById('page-product').style.display==='block'){
+    atc.classList.toggle('visible',window.scrollY>300);
+  }
+});
+
+// ════════════════════════════════
+// HERO STARS
+// ════════════════════════════════
+const starsEl=document.getElementById('hero-stars');
+if(starsEl){ for(let i=0;i<18;i++){const s=document.createElement('div');s.className='hero-star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;background:${Math.random()>.5?'var(--blue)':'var(--pink)'};animation-delay:${Math.random()*3}s;width:${3+Math.random()*5}px;height:${3+Math.random()*5}px;opacity:.${2+Math.floor(Math.random()*6)};`;starsEl.appendChild(s);}}
+
+// ════════════════════════════════
+// EXIT INTENT
+// ════════════════════════════════
+let exitShown=false;
+document.addEventListener('mouseleave',e=>{
+  if(e.clientY<=0&&!exitShown&&cart.length===0){
+    exitShown=true;
+    setTimeout(()=>document.getElementById('exit-popup').classList.add('open'),300);
+  }
+});
+function closeExit(){ document.getElementById('exit-popup').classList.remove('open'); }
+
+// ════════════════════════════════
+// ZGJEDHJA E PRINDËRVE
+// ════════════════════════════════
+const ZP_IDS = [1,5,9,15,17,22,12,7]; // featured picks across categories
+function renderZP(cat) {
+  const g = document.getElementById('zp-grid');
+  if (!g) return;
+  let prods = cat === 'all'
+    ? ZP_IDS.map(id => P.find(p => p.id === id)).filter(Boolean)
+    : P.filter(p => p.cat === cat).slice(0, 8);
+  g.innerHTML = prods.map(pCardHTML).join('');
+}
+function zpFilter(cat, el) {
+  document.querySelectorAll('.zp-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderZP(cat);
+}
+
+// ════════════════════════════════
+// BRANDS DATA
+// ════════════════════════════════
+const BRANDS = {
+  kidilo:    { name:'Kidilo',         ico:'🛒', bg:'linear-gradient(145deg,#EBF6FC,#c8e9f6)', ids:[1,2,3,4,9,10,11] },
+  sophie:    { name:'Sophie la Girafe',ico:'🦒', bg:'linear-gradient(145deg,#FEF3C7,#fde68a)', ids:[12,13,14] },
+  bibs:      { name:'Bibs',           ico:'🍶', bg:'linear-gradient(145deg,#FDF0F7,#f9c1db)', ids:[17,20] },
+  momcozy:   { name:'Momcozy',        ico:'🤱', bg:'linear-gradient(145deg,#DCFCE7,#86efac)', ids:[15,16,24] },
+  avent:     { name:'Philips Avent',  ico:'🍼', bg:'linear-gradient(145deg,#EBF6FC,#a5d8f0)', ids:[18,22] },
+  nuk:       { name:'NUK',            ico:'🧡', bg:'linear-gradient(145deg,#FFF7ED,#fed7aa)', ids:[19,21] },
+  lotta:     { name:'Lotta',          ico:'🛏', bg:'linear-gradient(145deg,#F5F0FF,#ddd6fe)', ids:[5,6,7,8] },
+  isobx:     { name:'IsoBx',          ico:'🚗', bg:'linear-gradient(145deg,#FFF1F2,#fecdd3)', ids:[9,11,23,25] },
+  mam:       { name:'MAM',            ico:'MAM',bg:'linear-gradient(145deg,#FDF4FF,#e9d5ff)',  ids:[17,19,20,12] },
+  drb:       { name:"Dr. Brown's",    ico:'🩵', bg:'linear-gradient(145deg,#EFF6FF,#bfdbfe)', ids:[17,18,19,20,22] },
+  tommee:    { name:'Tommee Tippee',  ico:'🧡', bg:'linear-gradient(145deg,#FFF7ED,#ffedd5)', ids:[17,18,19,21,22] },
+  chicco:    { name:'Chicco',         ico:'ch', bg:'linear-gradient(145deg,#F0FDF4,#bbf7d0)', ids:[1,2,9,15,16,12] },
+  canpol:    { name:'Canpol Babies',  ico:'🌸', bg:'linear-gradient(145deg,#FFF0F6,#fda4ba)', ids:[17,19,20,22,21] },
+  graco:     { name:'Graco',          ico:'graco',bg:'linear-gradient(145deg,#F0F9FF,#7dd3fc)',ids:[1,2,15,16,9] },
+  babybjorn: { name:'BabyBjörn',      ico:'👶', bg:'linear-gradient(145deg,#FFF8F0,#fed7aa)', ids:[1,15,16,25,9] },
+};
+
+// Brand visual map for modal header (inline SVG strings, no external URLs)
+const BRAND_VISUALS = {
+  kidilo:    { bg:'linear-gradient(145deg,#EBF6FC,#c8e9f6)', html:'<text x="30" y="36" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#2d8fb8">KDL</text>' },
+  avent:     { bg:'#fff', html:'<text x="30" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#0066A1">AVENT</text>' },
+  nuk:       { bg:'#fff', html:'<text x="30" y="36" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="20" font-weight="900" fill="#E4002B" letter-spacing="2">NUK</text>' },
+  drb:       { bg:'#fff', html:'<text x="30" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#003087">Dr. Brown\'s</text><text x="30" y="38" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#003087">Natural Flow</text>' },
+  chicco:    { bg:'#fff', html:'<circle cx="30" cy="12" r="4" fill="#E4002B"/><text x="30" y="36" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="#E4002B">chicco</text>' },
+  mam:       { bg:'#fff', html:'<text x="30" y="35" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="18" font-weight="900" fill="#6B2D8B" letter-spacing="2">MAM</text>' },
+  momcozy:   { bg:'#fff', html:'<text x="30" y="32" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#E91E8C">momcozy</text>' },
+  tommee:    { bg:'#fff', html:'<text x="30" y="24" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#E4002B">tommee</text><text x="30" y="38" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#E4002B">tippee</text>' },
+  sophie:    { bg:'linear-gradient(145deg,#FEF3C7,#fde68a)', html:'<text x="30" y="38" text-anchor="middle" font-size="32">🦒</text>' },
+  bibs:      { bg:'#2C2C2C', html:'<text x="30" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="white" letter-spacing="3">BIBS</text>' },
+  lotta:     { bg:'linear-gradient(145deg,#F5F0FF,#ddd6fe)', html:'<text x="30" y="34" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#7C3AED">LOTTA</text>' },
+  isobx:     { bg:'linear-gradient(145deg,#FFF1F2,#fecdd3)', html:'<text x="30" y="34" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="900" fill="#E11D48">IsoBx</text>' },
+  canpol:    { bg:'linear-gradient(145deg,#FFF0F6,#fda4ba)', html:'<text x="30" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#BE185D">canpol</text><text x="30" y="38" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#BE185D">babies</text>' },
+  graco:     { bg:'linear-gradient(145deg,#F0F9FF,#7dd3fc)', html:'<text x="30" y="35" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="900" fill="#0369a1">graco</text>' },
+  babybjorn: { bg:'#1A1A1A', html:'<text x="30" y="24" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="white">BABY</text><text x="30" y="37" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="white">BJÖRN</text>' },
+};
+
+function openBrandModal(brandKey) {
+  const brand = BRANDS[brandKey];
+  if (!brand) return;
+  const prods = brand.ids.map(id => P.find(p => p.id === id)).filter(Boolean);
+
+  // Header icon — inline SVG, no external URLs
+  const iconEl = document.getElementById('bm-icon');
+  const vis = BRAND_VISUALS[brandKey] || { bg:'var(--blue-light)', html:`<text x="30" y="35" text-anchor="middle" font-size="22">${brand.ico}</text>` };
+  iconEl.style.background = vis.bg;
+  iconEl.style.boxShadow = vis.bg === '#fff' || vis.bg === '#2C2C2C' || vis.bg === '#1A1A1A'
+    ? '0 2px 10px rgba(0,0,0,0.08),inset 0 0 0 1.5px rgba(0,0,0,0.07)' : '';
+  iconEl.innerHTML = `<svg viewBox="0 0 60 60" width="50" height="50" xmlns="http://www.w3.org/2000/svg">${vis.html}</svg>`;
+  document.getElementById('bm-name').textContent = brand.name;
+  document.getElementById('bm-count').textContent = prods.length + ' produkte';
+
+  // Grid
+  const grid = document.getElementById('bm-grid');
+  grid.innerHTML = prods.length === 0
+    ? `<div class="bm-empty">Asnjë produkt i disponueshëm.</div>`
+    : prods.map(p => `
+      <div class="bm-card" onclick="closeBrandModal();openProduct(${p.id})">
+        <div class="bm-card-img">
+          ${p.img ? `<img src="${p.img}" alt="${p.n}" onerror="this.style.display='none'">` : ''}
+          <span style="${p.img ? 'display:none' : ''};font-size:44px">${p.ico}</span>
+        </div>
+        <div class="bm-card-body">
+          <div class="bm-card-name">${p.n}</div>
+          <div class="bm-card-price">
+            ${p.p.toFixed(2)}€
+            ${p.op ? `<s>${p.op.toFixed(2)}€</s>` : ''}
+          </div>
+          <button class="bm-add-btn" onclick="event.stopPropagation();addCart(${p.id});this.textContent='✓ Shtuar!';setTimeout(()=>this.textContent='+ Shto',1400)">
+            + Shto
+          </button>
+        </div>
+      </div>`).join('');
+
+  // Highlight active brand pill
+  document.querySelectorAll('.brand-pill').forEach(el => el.classList.remove('active-brand'));
+  const pills = document.querySelectorAll('.brand-pill');
+  pills.forEach(pill => {
+    if (pill.getAttribute('onclick') && pill.getAttribute('onclick').includes(brandKey)) {
+      pill.classList.add('active-brand');
+    }
+  });
+
+  document.getElementById('brand-modal-bg').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBrandModal() {
+  document.getElementById('brand-modal-bg').classList.remove('open');
+  document.querySelectorAll('.brand-pill').forEach(el => el.classList.remove('active-brand'));
+  document.body.style.overflow = '';
+}
+
+// Close brand modal on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeBrandModal();
+});
+
+// ════════════════════════════════
+// BRAND TRACK DRAG SCROLL
+// ════════════════════════════════
+(function() {
+  let isDown = false, startX, scrollLeft;
+  const track = document.getElementById('brands-track');
+  const wrap = document.querySelector('.brands-track-wrap');
+  if (!wrap) return;
+  wrap.addEventListener('mousedown', e => {
+    isDown = true; startX = e.pageX - wrap.offsetLeft; scrollLeft = wrap.scrollLeft;
+  });
+  wrap.addEventListener('mouseleave', () => isDown = false);
+  wrap.addEventListener('mouseup', () => isDown = false);
+  wrap.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - wrap.offsetLeft;
+    wrap.scrollLeft = scrollLeft - (x - startX) * 1.2;
+  });
+})();
+
+// ════════════════════════════════
+// INIT
+// ════════════════════════════════
+showPage('home');
+renderZP('all');
+</script>
+</body>
+</html>
